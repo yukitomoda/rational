@@ -1,6 +1,5 @@
 .nyc_output/
 
-dist-*/
 lib/**
 tmp/**
 node_modules/

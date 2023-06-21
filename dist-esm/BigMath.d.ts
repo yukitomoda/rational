@@ -1,0 +1,11 @@
+declare function abs(value: bigint): bigint;
+declare function even(value: bigint): boolean;
+declare function odd(value: bigint): boolean;
+declare function gcd(lhs: bigint, rhs: bigint): bigint;
+declare function lcm(lhs: bigint, rhs: bigint): bigint;
+declare function bitAt(value: bigint, pos: number): boolean;
+declare function bitOn(value: bigint, pos: number): bigint;
+declare function bitOff(value: bigint, pos: number): bigint;
+declare function roundTo(value: bigint, exponent: number | bigint, base?: number | bigint): bigint;
+declare function countDigits(value: bigint, base?: number | bigint): number;
+export { abs, even, odd, gcd, lcm, bitAt, bitOn, bitOff, roundTo, countDigits };
