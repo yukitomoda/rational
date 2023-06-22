@@ -1,6 +1,33 @@
-import { ratio } from '../src/Ratio';
+import { Ratio, ratio } from '../src/Ratio';
 import { assert } from 'chai';
 import { it, describe } from 'mocha';
+
+describe('properties', () => {
+  it('isZero', () => {
+    assert.isTrue(new Ratio(0, 1).isZero);
+    assert.isTrue(new Ratio(0, 10000000n).isZero);
+    assert.isFalse(new Ratio(1, 10n ** 20n).isZero);
+    assert.isFalse(new Ratio(-1, 10n ** 20n).isZero);
+  });
+
+  it('isPositive', () => {
+    assert.isTrue(new Ratio(1, 10n ** 20n).isPositive);
+    assert.isTrue(new Ratio(-1, -(10n ** 20n)).isPositive);
+    assert.isFalse(new Ratio(-1, 10n ** 20n).isPositive);
+    assert.isFalse(new Ratio(1, -(10n ** 20n)).isPositive);
+    assert.isFalse(new Ratio(0, 1).isPositive);
+    assert.isFalse(new Ratio(0, 10000000n).isPositive);
+  });
+
+  it('isNegative', () => {
+    assert.isTrue(new Ratio(-1, 10n ** 20n).isNegative);
+    assert.isTrue(new Ratio(1, -(10n ** 20n)).isNegative);
+    assert.isFalse(new Ratio(1, 10n ** 20n).isNegative);
+    assert.isFalse(new Ratio(-1, -(10n ** 20n)).isNegative);
+    assert.isFalse(new Ratio(0, 1).isNegative);
+    assert.isFalse(new Ratio(0, 10000000n).isNegative);
+  });
+});
 
 describe('toDecimal', () => {
   it('正の整数の文字列表現', () => {
