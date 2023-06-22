@@ -11,10 +11,10 @@ function odd(value: bigint): boolean {
 }
 
 function gcd(lhs: bigint, rhs: bigint): bigint {
-  if (lhs === 0n) return rhs;
-  if (rhs === 0n) return lhs;
   let x = abs(lhs);
   let y = abs(rhs);
+  if (x === 0n) return y;
+  if (y === 0n) return x;
   let k = 0;
   while (even(x) && even(y)) {
     k++;
