@@ -10,6 +10,7 @@ import {
  * 有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。
  *
  * @param value 有理数に変換する値。
+ * @returns 既約分数の有理数インスタンス。
  */
 function ratio(value: ConvertableToRatio): Ratio;
 /**
@@ -49,14 +50,25 @@ class Ratio {
 
   private _reducedCache: Ratio | null = null;
 
+  /**
+   * この有理数が0であるかどうかを取得します。
+   */
   public get isZero(): boolean {
     return this.num === 0n;
   }
 
+  /**
+   * この有理数が0未満であるときtrueを返します。
+   * そうでないとき、falseを返します。
+   */
   public get isNegative(): boolean {
     return this.num < 0 !== this.denom < 0;
   }
 
+  /**
+   * この有理数が0より大きい場合にtrueを返します。
+   * そうでないとき、falseを返します。
+   */
   public get isPositive(): boolean {
     return this.num < 0 === this.denom < 0;
   }
@@ -69,6 +81,13 @@ class Ratio {
     this.denom = denom;
   }
 
+  /**
+   * 分子と分母を指定して、既約分数を返します。
+   * この既約分数は、有理数が負の場合numプロパティが負となります。
+   * @param num 分子
+   * @param denom 分母
+   * @returns 指定した分子、分母を持つ分数と等しい既約分数
+   */
   public static reduced(num: ConvertableToBigInt, denom: ConvertableToBigInt): Ratio {
     return new Ratio(num, denom).reduce();
   }
