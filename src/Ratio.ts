@@ -70,7 +70,7 @@ class Ratio {
    * そうでないとき、falseを返します。
    */
   public get isPositive(): boolean {
-    return this.num < 0 === this.denom < 0;
+    return this.num <= 0 === this.denom <= 0;
   }
 
   public constructor(num: ConvertableToBigInt, denom: ConvertableToBigInt) {
