@@ -73,10 +73,25 @@ describe('toDecimal', () => {
 });
 
 describe('standard operators', () => {
+  it('inv', () => {
+    assert.isTrue(new Ratio(1, 2).inv().eq(new Ratio(2, 1)));
+    assert.isTrue(new Ratio(-1, 2).inv().eq(new Ratio(-2, 1)));
+    assert.throws(() => new Ratio(0, 1).inv());
+    assert.throws(() => new Ratio(0, 2).inv());
+    assert.throws(() => new Ratio(0, -2).inv());
+  });
+
+  it('neg', () => {
+    assert.isTrue(new Ratio(1, 2).neg().eq(new Ratio(-1, 2)));
+    assert.isTrue(new Ratio(-1, 2).neg().eq(new Ratio(1, 2)));
+    assert.isTrue(new Ratio(0, 1).neg().eq(new Ratio(0, 1)));
+  });
+
   describe('eq', () => {
     it('Ratio', () => {
       assert.isTrue(new Ratio(0, 1).eq(new Ratio(0, 1)));
       assert.isTrue(new Ratio(0, 1).eq(new Ratio(0, 2)));
+      assert.isTrue(new Ratio(0, 1).eq(new Ratio(0, -1)));
       assert.isTrue(new Ratio(1, 2).eq(new Ratio(1, 2)));
       assert.isTrue(new Ratio(1, 2).eq(new Ratio(2, 4)));
       assert.isTrue(new Ratio(1, 2).eq(new Ratio(-2, -4)));
