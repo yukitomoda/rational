@@ -71,3 +71,47 @@ describe('toDecimal', () => {
     assert.equal(ratio(1949, 1000).toDecimal(3), '1.949');
   });
 });
+
+describe('standard operators', () => {
+  describe('eq', () => {
+    it('Ratio', () => {
+      assert.isTrue(new Ratio(0, 1).eq(new Ratio(0, 1)));
+      assert.isTrue(new Ratio(0, 1).eq(new Ratio(0, 2)));
+      assert.isTrue(new Ratio(1, 2).eq(new Ratio(1, 2)));
+      assert.isTrue(new Ratio(1, 2).eq(new Ratio(2, 4)));
+      assert.isTrue(new Ratio(1, 2).eq(new Ratio(-2, -4)));
+      assert.isTrue(new Ratio(-1, 2).eq(new Ratio(-2, 4)));
+      assert.isTrue(new Ratio(-1, 2).eq(new Ratio(2, -4)));
+      assert.isTrue(new Ratio(1, -2).eq(new Ratio(-2, 4)));
+
+      assert.isFalse(new Ratio(1, 2).eq(new Ratio(1, 3)));
+      assert.isFalse(new Ratio(1, 2).eq(new Ratio(3, 2)));
+      assert.isFalse(new Ratio(1, 2).eq(new Ratio(-1, 2)));
+      assert.isFalse(new Ratio(1, 2).eq(new Ratio(1, -2)));
+      assert.isFalse(new Ratio(-1, 2).eq(new Ratio(1, 2)));
+      assert.isFalse(new Ratio(1, -2).eq(new Ratio(1, 2)));
+      assert.isFalse(new Ratio(1, -2).eq(new Ratio(0, 1)));
+    });
+
+    it('bigint', () => {
+      assert.isTrue(new Ratio(0, 1).eq(0n));
+      assert.isTrue(new Ratio(0, 2).eq(0n));
+      assert.isTrue(new Ratio(1, 1).eq(1n));
+      assert.isTrue(new Ratio(-1, -1).eq(1n));
+      assert.isTrue(new Ratio(1, -1).eq(-1n));
+      assert.isTrue(new Ratio(-1, 1).eq(-1n));
+      assert.isTrue(new Ratio(10, 1).eq(10n));
+      assert.isTrue(new Ratio(-10, -1).eq(10n));
+      assert.isTrue(new Ratio(10, -1).eq(-10n));
+      assert.isTrue(new Ratio(-10, 1).eq(-10n));
+
+      assert.isFalse(new Ratio(1, 2).eq(0n));
+      assert.isFalse(new Ratio(1, 2).eq(1n));
+      assert.isFalse(new Ratio(2, 1).eq(1n));
+      assert.isFalse(new Ratio(-1, 1).eq(1n));
+      assert.isFalse(new Ratio(1, -1).eq(1n));
+      assert.isFalse(new Ratio(1, 1).eq(-1n));
+      assert.isFalse(new Ratio(-1, -1).eq(-1n));
+    });
+  });
+});
