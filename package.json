@@ -12,7 +12,9 @@
     "prebuild": "rimraf dist-*",
     "build": "run-p build:*",
     "build:cjs": "tsc --module commonjs --outDir dist-cjs",
-    "build:esm": "tsc --module es2020 --outDir dist-esm"
+    "build:esm": "tsc --module es2020 --outDir dist-esm",
+    "postbuild": "doc",
+    "doc": "npx typedoc src/index.ts"
   },
   "author": "yt",
   "license": "MIT",
@@ -35,6 +37,7 @@
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.24.8",
     "typescript": "^5.1.3"
   }
 }

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ratio = exports.ratio = void 0;
 const BigMath_1 = require("./BigMath");
 const types_1 = require("./types");
-function ratio(num, denom = undefined) {
+function ratio(num, denom) {
     if ((0, types_1.isConvertableToRatio)(num) && denom == null) {
         return Ratio.from(num);
     }
@@ -19,14 +19,25 @@ exports.ratio = ratio;
  * 任意精度の有理数を表します。
  */
 class Ratio {
+    /**
+     * この有理数が0であるかどうかを取得します。
+     */
     get isZero() {
         return this.num === 0n;
     }
+    /**
+     * この有理数が0未満であるときtrueを返します。
+     * そうでないとき、falseを返します。
+     */
     get isNegative() {
         return this.num < 0 !== this.denom < 0;
     }
+    /**
+     * この有理数が0より大きい場合にtrueを返します。
+     * そうでないとき、falseを返します。
+     */
     get isPositive() {
-        return this.num < 0 === this.denom < 0;
+        return this.num <= 0 === this.denom <= 0;
     }
     constructor(num, denom) {
         /**
@@ -60,6 +71,13 @@ class Ratio {
         this.num = num;
         this.denom = denom;
     }
+    /**
+     * 分子と分母を指定して、既約分数を返します。
+     * この既約分数は、有理数が負の場合numプロパティが負となります。
+     * @param num 分子
+     * @param denom 分母
+     * @returns 指定した分子、分母を持つ分数と等しい既約分数
+     */
     static reduced(num, denom) {
         return new Ratio(num, denom).reduce();
     }
@@ -79,7 +97,12 @@ class Ratio {
             return this._reducedCache;
         const _gcd = (0, BigMath_1.gcd)(this.num, this.denom);
         if (_gcd === 1n) {
-            this._reducedCache = this;
+            if (this.denom < 0) {
+                this._reducedCache = new Ratio(-this.num, -this.denom);
+            }
+            else {
+                this._reducedCache = this;
+            }
         }
         else if (this.denom < 0) {
             this._reducedCache = new Ratio(-this.num / _gcd, -this.denom / _gcd);

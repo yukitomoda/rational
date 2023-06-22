@@ -10,6 +10,10 @@ function odd(value) {
 function gcd(lhs, rhs) {
     let x = abs(lhs);
     let y = abs(rhs);
+    if (x === 0n)
+        return y;
+    if (y === 0n)
+        return x;
     let k = 0;
     while (even(x) && even(y)) {
         k++;
