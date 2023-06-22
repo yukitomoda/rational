@@ -59,6 +59,15 @@ describe('gcd', () => {
     assert.equal(gcd(-7n * 11n * 13n, 7n * 11n * 17n), 7n * 11n);
     assert.equal(gcd(7n * 11n * 17n, -7n * 11n * 13n), 7n * 11n);
   });
+
+  it('一方が0のときのGCD', () => {
+    assert.equal(gcd(0n, 1n), 1n);
+    assert.equal(gcd(0n, 100n), 100n);
+    assert.equal(gcd(0n, -100n), 100n);
+    assert.equal(gcd(1n, 0n), 1n);
+    assert.equal(gcd(100n, 0n), 100n);
+    assert.equal(gcd(-100n, 0n), 100n);
+  });
 });
 
 describe('lcm', () => {
