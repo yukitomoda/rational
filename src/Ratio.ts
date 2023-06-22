@@ -21,10 +21,7 @@ function ratio(value: ConvertableToRatio): Ratio;
  * @returns 既約分数の有理数インスタンス。
  */
 function ratio(num: ConvertableToBigInt, denom: ConvertableToBigInt): Ratio;
-function ratio(
-  num: ConvertableToRatio | ConvertableToBigInt,
-  denom: ConvertableToBigInt | undefined = undefined
-): Ratio {
+function ratio(num: ConvertableToRatio | ConvertableToBigInt, denom?: ConvertableToBigInt): Ratio {
   if (isConvertableToRatio(num) && denom == null) {
     return Ratio.from(num);
   } else if (isConvertableToBigInt(num) && isConvertableToBigInt(denom)) {
