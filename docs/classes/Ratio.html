@@ -69,16 +69,27 @@
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="constructor.new_Ratio"><span class="tsd-kind-constructor-signature">new <wbr/>Ratio</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">num</span>, <span class="tsd-kind-parameter">denom</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#constructor.new_Ratio" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>指定した分子、分母で有理数のインスタンスを作成します。</p>
+<p>このコンストラクタでは、分子、分母の値はそのまま保持され、既約分数への変換は行われません。
+あらかじめ既約分数として作成する場合は、<code>ratio()</code> を使用してください。</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">num</span>: <a href="../types/ConvertableToBigInt.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToBigInt</a></h5></li>
+<h5><span class="tsd-kind-parameter">num</span>: <a href="../types/ConvertableToBigInt.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToBigInt</a></h5>
+<div class="tsd-comment tsd-typography"><p>分子</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
 <li>
-<h5><span class="tsd-kind-parameter">denom</span>: <a href="../types/ConvertableToBigInt.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToBigInt</a></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">denom</span>: <a href="../types/ConvertableToBigInt.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToBigInt</a></h5>
+<div class="tsd-comment tsd-typography"><p>分母</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:73</li></ul></aside></li></ul></section></section>
+<li>Defined in Ratio.ts:82</li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="_reducedCache" class="tsd-anchor"></a>
@@ -89,7 +100,7 @@
 <section class="tsd-panel tsd-member"><a id="denom" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>denom</span><a href="#denom" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">denom</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">bigint</span></div>
-<div class="tsd-comment tsd-typography"><p>分母</p>
+<div class="tsd-comment tsd-typography"><p>分母を取得します。</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
@@ -97,7 +108,7 @@
 <section class="tsd-panel tsd-member"><a id="num" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>num</span><a href="#num" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">num</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">bigint</span></div>
-<div class="tsd-comment tsd-typography"><p>分子</p>
+<div class="tsd-comment tsd-typography"><p>分子を取得します。</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
@@ -115,7 +126,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:61</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:62</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="isPositive" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>is<wbr/>Positive</span><a href="#isPositive" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -127,18 +138,19 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:69</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:70</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="isZero" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>is<wbr/>Zero</span><a href="#isZero" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature" id="isZero.isZero-1"><span class="tsd-signature-symbol">get</span> isZero<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>この有理数が0であるかどうかを取得します。</p>
+<div class="tsd-comment tsd-typography"><p>この有理数が0であるときtrueを返します。
+そうでないとき、falseを返します。</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:53</li></ul></aside></li></ul></section></section>
+<li>Defined in Ratio.ts:54</li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member"><a id="add" class="tsd-anchor"></a>
@@ -146,40 +158,58 @@
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="add.add-1"><span class="tsd-kind-call-signature">add</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">rhs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#add.add-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>この有理数に指定した値を加えて得られる値を返します。</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5>
+<div class="tsd-comment tsd-typography"><p>加算する値。</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:138</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:165</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="div" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>div</span><a href="#div" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="div.div-1"><span class="tsd-kind-call-signature">div</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">rhs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#div.div-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>この有理数を指定した値で割って得られる値を返します。</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5>
+<div class="tsd-comment tsd-typography"><p>除算する値。</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:164</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:203</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="eq" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>eq</span><a href="#eq" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="eq.eq-1"><span class="tsd-kind-call-signature">eq</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">rhs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#eq.eq-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>この有理数が指定した値と等しいかどうかを調べます。</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">rhs</span>: <a href="../types/ConvertableToRational.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToRational</a></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">rhs</span>: <a href="../types/ConvertableToRatio.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToRatio</a></h5>
+<div class="tsd-comment tsd-typography"><p>この値と等しいか調べる値。</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:173</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:216</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="getReduced" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>get<wbr/>Reduced</span><a href="#getReduced" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -187,91 +217,130 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:102</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:115</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="inv" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>inv</span><a href="#inv" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="inv.inv-1"><span class="tsd-kind-call-signature">inv</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#inv.inv-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>この有理数の逆数を計算して返します。</p>
+</div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography">
+<h4>Throws</h4><p>値が0のとき</p>
+</div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:125</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:145</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="mul" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>mul</span><a href="#mul" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="mul.mul-1"><span class="tsd-kind-call-signature">mul</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">rhs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#mul.mul-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>この有理数に指定した値をかけて得られる値を返します。</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5>
+<div class="tsd-comment tsd-typography"><p>乗算する値。</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:155</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:190</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="neg" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>neg</span><a href="#neg" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="neg.neg-1"><span class="tsd-kind-call-signature">neg</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#neg.neg-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>この有理数の符号を反転した値を返します。</p>
+</div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:130</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:153</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="reduce" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>reduce</span><a href="#reduce" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="reduce.reduce-1"><span class="tsd-kind-call-signature">reduce</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#reduce.reduce-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>この有理数を既約分数に変換した値を返します。</p>
+</div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:121</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:137</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="sub" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>sub</span><a href="#sub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="sub.sub-1"><span class="tsd-kind-call-signature">sub</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">rhs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#sub.sub-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>この有理数から指定した値を引いて得られる値を返します。</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5>
+<div class="tsd-comment tsd-typography"><p>減算する値。</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:147</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:178</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="toDecimal" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>to<wbr/>Decimal</span><a href="#toDecimal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="toDecimal.toDecimal-1"><span class="tsd-kind-call-signature">to<wbr/>Decimal</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">digits</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#toDecimal.toDecimal-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>この値を指定した小数点以下桁数までの10進法表記文字列に変換します。</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">digits</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">digits</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10</span></h5>
+<div class="tsd-comment tsd-typography"><p>文字列に含める小数点以下桁数。</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:183</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:230</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="toString" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>to<wbr/>String</span><a href="#toString" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="toString.toString-1"><span class="tsd-kind-call-signature">to<wbr/>String</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#toString.toString-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
+<div class="tsd-comment tsd-typography"><p>このインスタンスを文字列表現に変換します。</p>
+<p>文字列は、<code>num/denom</code>形式です。ただし、denomが負の場合、<code>num/(denom)</code>表記となります。</p>
+</div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:202</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:254</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="from" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>from</span><a href="#from" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="from.from-1"><span class="tsd-kind-call-signature">from</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#from.from-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>指定した値を有理数のインスタンスに変換します。</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">value</span>: <a href="../types/ConvertableToRational.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToRational</a></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
+<h5><span class="tsd-kind-parameter">value</span>: <a href="../types/ConvertableToRatio.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToRatio</a></h5>
+<div class="tsd-comment tsd-typography"><p>有理数に変換する値。</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:92</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:105</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="reduced" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>reduced</span><a href="#reduced" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -297,7 +366,7 @@
 
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:88</li></ul></aside></li></ul></section></section></div>
+<li>Defined in Ratio.ts:97</li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -342,7 +411,7 @@
 <ul class="tsd-small-nested-navigation">
 <li><a href="Ratio.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-128"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)"></path></g></svg><span>Ratio</span></a></li>
 <li><a href="../types/ConvertableToBigInt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>Convertable<wbr/>To<wbr/>Big<wbr/>Int</span></a></li>
-<li><a href="../types/ConvertableToRational.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>Convertable<wbr/>To<wbr/>Rational</span></a></li>
+<li><a href="../types/ConvertableToRatio.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>Convertable<wbr/>To<wbr/>Ratio</span></a></li>
 <li><a href="../functions/ratio-1.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-64"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)"></path></g></svg><span>ratio</span></a></li></ul></nav></div></div></div>
 <div class="tsd-generator">
 <p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>

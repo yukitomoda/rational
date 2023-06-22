@@ -16,7 +16,8 @@ function ratio(num, denom) {
  */
 class Ratio {
     /**
-     * この有理数が0であるかどうかを取得します。
+     * この有理数が0であるときtrueを返します。
+     * そうでないとき、falseを返します。
      */
     get isZero() {
         return this.num === 0n;
@@ -35,9 +36,17 @@ class Ratio {
     get isPositive() {
         return this.num <= 0 === this.denom <= 0;
     }
+    /**
+     * 指定した分子、分母で有理数のインスタンスを作成します。
+     *
+     * このコンストラクタでは、分子、分母の値はそのまま保持され、既約分数への変換は行われません。
+     * あらかじめ既約分数として作成する場合は、`ratio()` を使用してください。
+     * @param num 分子
+     * @param denom 分母
+     */
     constructor(num, denom) {
         /**
-         * 分子
+         * 分子を取得します。
          */
         Object.defineProperty(this, "num", {
             enumerable: true,
@@ -46,7 +55,7 @@ class Ratio {
             value: void 0
         });
         /**
-         * 分母
+         * 分母を取得します。
          */
         Object.defineProperty(this, "denom", {
             enumerable: true,
@@ -77,6 +86,10 @@ class Ratio {
     static reduced(num, denom) {
         return new Ratio(num, denom).reduce();
     }
+    /**
+     * 指定した値を有理数のインスタンスに変換します。
+     * @param value 有理数に変換する値。
+     */
     static from(value) {
         if (value instanceof Ratio) {
             return value;
@@ -108,14 +121,24 @@ class Ratio {
         }
         return this._reducedCache;
     }
+    /**
+     * この有理数を既約分数に変換した値を返します。
+     */
     reduce() {
         return this.getReduced();
     }
+    /**
+     * この有理数の逆数を計算して返します。
+     * @throws 値が0のとき
+     */
     inv() {
         if (this.isZero)
             throw new Error('Ratio cannot be divided by zero.');
         return Ratio.reduced(this.denom, this.num);
     }
+    /**
+     * この有理数の符号を反転した値を返します。
+     */
     neg() {
         if (this.denom < 0) {
             return new Ratio(this.num, -this.denom);
@@ -124,6 +147,10 @@ class Ratio {
             return new Ratio(-this.num, this.denom);
         }
     }
+    /**
+     * この有理数に指定した値を加えて得られる値を返します。
+     * @param rhs 加算する値。
+     */
     add(rhs) {
         if (rhs instanceof Ratio) {
             return Ratio.reduced(this.num * rhs.denom + rhs.num * this.denom, this.denom * rhs.denom);
@@ -133,6 +160,10 @@ class Ratio {
             return Ratio.reduced(this.num + this.denom * rhs, this.denom);
         }
     }
+    /**
+     * この有理数から指定した値を引いて得られる値を返します。
+     * @param rhs 減算する値。
+     */
     sub(rhs) {
         if (rhs instanceof Ratio) {
             return this.add(rhs.neg());
@@ -141,6 +172,10 @@ class Ratio {
             return this.add(-rhs);
         }
     }
+    /**
+     * この有理数に指定した値をかけて得られる値を返します。
+     * @param rhs 乗算する値。
+     */
     mul(rhs) {
         if (rhs instanceof Ratio) {
             return Ratio.reduced(this.num * rhs.num, this.denom * rhs.denom);
@@ -150,6 +185,10 @@ class Ratio {
             return Ratio.reduced(this.num * rhs, this.denom);
         }
     }
+    /**
+     * この有理数を指定した値で割って得られる値を返します。
+     * @param rhs 除算する値。
+     */
     div(rhs) {
         if (rhs instanceof Ratio) {
             return this.mul(rhs.inv());
@@ -159,6 +198,10 @@ class Ratio {
             return Ratio.reduced(this.num, this.denom * rhs);
         }
     }
+    /**
+     * この有理数が指定した値と等しいかどうかを調べます。
+     * @param rhs この値と等しいか調べる値。
+     */
     eq(rhs) {
         const reduced = this.getReduced();
         if (rhs instanceof Ratio) {
@@ -169,6 +212,10 @@ class Ratio {
         }
         return reduced.num === rhs.num && reduced.denom === rhs.denom;
     }
+    /**
+     * この値を指定した小数点以下桁数までの10進法表記文字列に変換します。
+     * @param digits 文字列に含める小数点以下桁数。
+     */
     toDecimal(digits = 10) {
         const reduced = this.getReduced();
         const sign = reduced.num < 0;
@@ -186,6 +233,11 @@ class Ratio {
         const fracPart = fracDigitsAsInt.toString().padStart(digits, '0');
         return `${sign ? '-' : ''}${intPart}.${fracPart}`;
     }
+    /**
+     * このインスタンスを文字列表現に変換します。
+     *
+     * 文字列は、`num/denom`形式です。ただし、denomが負の場合、`num/(denom)`表記となります。
+     */
     toString() {
         if (this.denom < 0) {
             return `${this.num}/(${this.denom})`;
