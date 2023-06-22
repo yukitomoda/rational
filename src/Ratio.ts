@@ -107,7 +107,11 @@ class Ratio {
 
     const _gcd = gcd(this.num, this.denom);
     if (_gcd === 1n) {
-      this._reducedCache = this;
+      if (this.denom < 0) {
+        this._reducedCache = new Ratio(-this.num, -this.denom);
+      } else {
+        this._reducedCache = this;
+      }
     } else if (this.denom < 0) {
       this._reducedCache = new Ratio(-this.num / _gcd, -this.denom / _gcd);
     } else {
