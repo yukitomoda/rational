@@ -7,6 +7,6 @@ declare function isConvertableToBigInt(value: any): value is ConvertableToBigInt
 /**
  * Rationalに暗黙的に変換可能な型を表します。
  */
-type ConvertableToRational = Ratio | bigint;
-declare function isConvertableToRatio(value: any): value is ConvertableToRational;
-export { type ConvertableToBigInt, isConvertableToBigInt, type ConvertableToRational, isConvertableToRatio };
+type ConvertableToRatio = Ratio | bigint;
+declare function isConvertableToRatio(value: any): value is ConvertableToRatio;
+export { type ConvertableToBigInt, isConvertableToBigInt, type ConvertableToRatio, isConvertableToRatio };

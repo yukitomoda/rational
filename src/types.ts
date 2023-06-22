@@ -12,9 +12,9 @@ function isConvertableToBigInt(value: any): value is ConvertableToBigInt {
 /**
  * Rationalに暗黙的に変換可能な型を表します。
  */
-type ConvertableToRational = Ratio | bigint;
-function isConvertableToRatio(value: any): value is ConvertableToRational {
+type ConvertableToRatio = Ratio | bigint;
+function isConvertableToRatio(value: any): value is ConvertableToRatio {
   return value instanceof Ratio || typeof value === 'object';
 }
 
-export { type ConvertableToBigInt, isConvertableToBigInt, type ConvertableToRational, isConvertableToRatio };
+export { type ConvertableToBigInt, isConvertableToBigInt, type ConvertableToRatio, isConvertableToRatio };

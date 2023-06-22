@@ -1,11 +1,11 @@
-import { type ConvertableToRational, type ConvertableToBigInt } from './types';
+import { type ConvertableToRatio, type ConvertableToBigInt } from './types';
 /**
  * 有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。
  *
  * @param value 有理数に変換する値。
  * @returns 既約分数の有理数インスタンス。
  */
-declare function ratio(value: ConvertableToRational): Ratio;
+declare function ratio(value: ConvertableToRatio): Ratio;
 /**
  * 有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。
  *
@@ -50,7 +50,7 @@ declare class Ratio {
      * @returns 指定した分子、分母を持つ分数と等しい既約分数
      */
     static reduced(num: ConvertableToBigInt, denom: ConvertableToBigInt): Ratio;
-    static from(value: ConvertableToRational): Ratio;
+    static from(value: ConvertableToRatio): Ratio;
     private getReduced;
     reduce(): Ratio;
     inv(): Ratio;
@@ -59,7 +59,7 @@ declare class Ratio {
     sub(rhs: Ratio | bigint | number): Ratio;
     mul(rhs: Ratio | bigint | number): Ratio;
     div(rhs: Ratio | bigint | number): Ratio;
-    eq(rhs: ConvertableToRational): boolean;
+    eq(rhs: ConvertableToRatio): boolean;
     toDecimal(digits?: number): string;
     toString(): string;
 }

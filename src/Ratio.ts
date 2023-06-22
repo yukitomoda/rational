@@ -1,6 +1,6 @@
 import { abs, gcd, roundTo } from './BigMath';
 import {
-  type ConvertableToRational,
+  type ConvertableToRatio,
   type ConvertableToBigInt,
   isConvertableToRatio,
   isConvertableToBigInt,
@@ -12,7 +12,7 @@ import {
  * @param value 有理数に変換する値。
  * @returns 既約分数の有理数インスタンス。
  */
-function ratio(value: ConvertableToRational): Ratio;
+function ratio(value: ConvertableToRatio): Ratio;
 /**
  * 有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。
  *
@@ -21,7 +21,7 @@ function ratio(value: ConvertableToRational): Ratio;
  * @returns 既約分数の有理数インスタンス。
  */
 function ratio(num: ConvertableToBigInt, denom: ConvertableToBigInt): Ratio;
-function ratio(num: ConvertableToRational | ConvertableToBigInt, denom?: ConvertableToBigInt): Ratio {
+function ratio(num: ConvertableToRatio | ConvertableToBigInt, denom?: ConvertableToBigInt): Ratio {
   if (isConvertableToRatio(num) && denom == null) {
     return Ratio.from(num);
   } else if (isConvertableToBigInt(num) && isConvertableToBigInt(denom)) {
@@ -89,7 +89,7 @@ class Ratio {
     return new Ratio(num, denom).reduce();
   }
 
-  public static from(value: ConvertableToRational): Ratio {
+  public static from(value: ConvertableToRatio): Ratio {
     if (value instanceof Ratio) {
       return value;
     } else if (typeof value === 'bigint') {
@@ -170,7 +170,7 @@ class Ratio {
     }
   }
 
-  public eq(rhs: ConvertableToRational): boolean {
+  public eq(rhs: ConvertableToRatio): boolean {
     const reduced = this.getReduced();
     if (rhs instanceof Ratio) {
       rhs = rhs.reduce();
