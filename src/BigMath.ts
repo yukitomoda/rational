@@ -11,6 +11,8 @@ function odd(value: bigint): boolean {
 }
 
 function gcd(lhs: bigint, rhs: bigint): bigint {
+  if (lhs === 0n) return rhs;
+  if (rhs === 0n) return lhs;
   let x = abs(lhs);
   let y = abs(rhs);
   let k = 0;
