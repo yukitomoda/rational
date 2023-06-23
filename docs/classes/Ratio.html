@@ -60,6 +60,7 @@
 <a href="Ratio.html#toDecimal" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>to<wbr/>Decimal</span></a>
 <a href="Ratio.html#toString" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>to<wbr/>String</span></a>
 <a href="Ratio.html#from" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>from</span></a>
+<a href="Ratio.html#fromNumber" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>from<wbr/>Number</span></a>
 <a href="Ratio.html#reduced" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>reduced</span></a>
 </div></section></div></details></section></section>
 <section class="tsd-panel-group tsd-member-group">
@@ -164,14 +165,14 @@
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5>
+<h5><span class="tsd-kind-parameter">rhs</span>: <a href="../types/ConvertableToRatio.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToRatio</a></h5>
 <div class="tsd-comment tsd-typography"><p>加算する値。</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:165</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:193</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="div" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>div</span><a href="#div" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -190,7 +191,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:203</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:229</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="eq" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>eq</span><a href="#eq" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -209,7 +210,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:216</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:241</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="getReduced" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>get<wbr/>Reduced</span><a href="#getReduced" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-private">
@@ -217,7 +218,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:115</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:143</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="inv" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>inv</span><a href="#inv" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -230,7 +231,7 @@
 <h4>Throws</h4><p>値が0のとき</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:145</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:173</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="mul" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>mul</span><a href="#mul" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -242,14 +243,14 @@
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5>
+<h5><span class="tsd-kind-parameter">rhs</span>: <a href="../types/ConvertableToRatio.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToRatio</a></h5>
 <div class="tsd-comment tsd-typography"><p>乗算する値。</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:190</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:217</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="neg" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>neg</span><a href="#neg" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -260,7 +261,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:153</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:181</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="reduce" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>reduce</span><a href="#reduce" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -271,7 +272,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:137</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:165</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="sub" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>sub</span><a href="#sub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -283,14 +284,14 @@
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">rhs</span>: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span><span class="tsd-signature-symbol"> | </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h5>
+<h5><span class="tsd-kind-parameter">rhs</span>: <a href="../types/ConvertableToRatio.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToRatio</a></h5>
 <div class="tsd-comment tsd-typography"><p>減算する値。</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:178</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:205</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="toDecimal" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>to<wbr/>Decimal</span><a href="#toDecimal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -309,7 +310,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:230</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:255</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="toString" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>to<wbr/>String</span><a href="#toString" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -321,7 +322,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:254</li></ul></aside></li></ul></section>
+<li>Defined in Ratio.ts:279</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="from" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>from</span><a href="#from" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -341,6 +342,25 @@
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
 <li>Defined in Ratio.ts:105</li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="fromNumber" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>from<wbr/>Number</span><a href="#fromNumber" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="fromNumber.fromNumber-1"><span class="tsd-kind-call-signature">from<wbr/>Number</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#fromNumber.fromNumber-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>指定した数値を有理数に変換します。</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>有理数に変換する値。</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in Ratio.ts:121</li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="reduced" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>reduced</span><a href="#reduced" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -405,6 +425,7 @@
 <li><a href="#toDecimal" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>to<wbr/>Decimal</span></a></li>
 <li><a href="#toString" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>to<wbr/>String</span></a></li>
 <li><a href="#from" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>from</span></a></li>
+<li><a href="#fromNumber" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>from<wbr/>Number</span></a></li>
 <li><a href="#reduced" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>reduced</span></a></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../modules.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>rational</span></a>

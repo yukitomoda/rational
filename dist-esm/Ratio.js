@@ -97,9 +97,39 @@ class Ratio {
         else if (typeof value === 'bigint') {
             return new Ratio(value, 1n);
         }
+        else if (typeof value === 'number') {
+            return Ratio.fromNumber(value);
+        }
         else {
             throw new TypeError();
         }
+    }
+    /**
+     * 指定した数値を有理数に変換します。
+     * @param value 有理数に変換する値。
+     */
+    static fromNumber(value) {
+        const step = 2 ** 128;
+        const bigIntStep = BigInt(step);
+        if (Number.isNaN(value))
+            throw new Error('NaN cannot be converted to Ratio.');
+        if (!Number.isFinite(value))
+            throw new Error('Infinity cannot be converted to Ratio.');
+        const isNegative = value < 0;
+        value = Math.abs(value);
+        let num = 0n;
+        let denom = 1n;
+        while (true) {
+            const intPart = Math.floor(value);
+            num = num * bigIntStep + BigInt(intPart);
+            value = (value - intPart) * step;
+            if (value <= 0)
+                break;
+            denom *= bigIntStep;
+        }
+        if (isNegative)
+            num = -num;
+        return Ratio.reduced(num, denom);
     }
     getReduced() {
         if (this._reducedCache != null)
@@ -156,8 +186,7 @@ class Ratio {
             return Ratio.reduced(this.num * rhs.denom + rhs.num * this.denom, this.denom * rhs.denom);
         }
         else {
-            rhs = BigInt(rhs);
-            return Ratio.reduced(this.num + this.denom * rhs, this.denom);
+            return this.add(Ratio.from(rhs));
         }
     }
     /**
@@ -181,8 +210,7 @@ class Ratio {
             return Ratio.reduced(this.num * rhs.num, this.denom * rhs.denom);
         }
         else {
-            rhs = BigInt(rhs);
-            return Ratio.reduced(this.num * rhs, this.denom);
+            return this.mul(Ratio.from(rhs));
         }
     }
     /**
@@ -194,8 +222,7 @@ class Ratio {
             return this.mul(rhs.inv());
         }
         else {
-            rhs = BigInt(rhs);
-            return Ratio.reduced(this.num, this.denom * rhs);
+            return this.div(Ratio.from(rhs));
         }
     }
     /**
@@ -208,7 +235,7 @@ class Ratio {
             rhs = rhs.reduce();
         }
         else {
-            rhs = Ratio.reduced(rhs, 1n);
+            rhs = Ratio.from(rhs);
         }
         return reduced.num === rhs.num && reduced.denom === rhs.denom;
     }

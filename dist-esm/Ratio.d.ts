@@ -64,6 +64,11 @@ declare class Ratio {
      * @param value 有理数に変換する値。
      */
     static from(value: ConvertableToRatio): Ratio;
+    /**
+     * 指定した数値を有理数に変換します。
+     * @param value 有理数に変換する値。
+     */
+    static fromNumber(value: number): Ratio;
     private getReduced;
     /**
      * この有理数を既約分数に変換した値を返します。
@@ -82,17 +87,17 @@ declare class Ratio {
      * この有理数に指定した値を加えて得られる値を返します。
      * @param rhs 加算する値。
      */
-    add(rhs: Ratio | bigint | number): Ratio;
+    add(rhs: ConvertableToRatio): Ratio;
     /**
      * この有理数から指定した値を引いて得られる値を返します。
      * @param rhs 減算する値。
      */
-    sub(rhs: Ratio | bigint | number): Ratio;
+    sub(rhs: ConvertableToRatio): Ratio;
     /**
      * この有理数に指定した値をかけて得られる値を返します。
      * @param rhs 乗算する値。
      */
-    mul(rhs: Ratio | bigint | number): Ratio;
+    mul(rhs: ConvertableToRatio): Ratio;
     /**
      * この有理数を指定した値で割って得られる値を返します。
      * @param rhs 除算する値。
