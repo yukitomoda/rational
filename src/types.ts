@@ -12,7 +12,7 @@ function isConvertableToBigInt(value: any): value is ConvertableToBigInt {
 /**
  * Ratioに暗黙的に変換可能な型を表します。
  */
-type ConvertableToRatio = Ratio | bigint;
+type ConvertableToRatio = Ratio | bigint | number;
 function isConvertableToRatio(value: any): value is ConvertableToRatio {
   return value instanceof Ratio || typeof value === 'object';
 }

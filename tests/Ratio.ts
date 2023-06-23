@@ -72,6 +72,37 @@ describe('toDecimal', () => {
   });
 });
 
+describe('conversion', () => {
+  it('fromNumber', () => {
+    assert.isTrue(Ratio.fromNumber(1).eq(ratio(1, 1)));
+    assert.isTrue(Ratio.fromNumber(0.5).eq(ratio(1, 2)));
+    assert.isTrue(Ratio.fromNumber(0.25).eq(ratio(1, 4)));
+    assert.isTrue(Ratio.fromNumber(0.75).eq(ratio(3, 4)));
+    assert.isTrue(Ratio.fromNumber(2).eq(ratio(2, 1)));
+    assert.isTrue(Ratio.fromNumber(3).eq(ratio(3, 1)));
+    assert.isTrue(Ratio.fromNumber(4).eq(ratio(4, 1)));
+
+    assert.isTrue(Ratio.fromNumber(-1).eq(ratio(-1, 1)));
+    assert.isTrue(Ratio.fromNumber(-0.25).eq(ratio(-1, 4)));
+    assert.isTrue(Ratio.fromNumber(-4).eq(ratio(-4, 1)));
+
+    assert.isTrue(Ratio.fromNumber(Number.MAX_SAFE_INTEGER).eq(ratio(Number.MAX_SAFE_INTEGER, 1)));
+    assert.isTrue(Ratio.fromNumber(Number.MAX_VALUE).eq(ratio(Number.MAX_VALUE, 1)));
+    assert.isTrue(Ratio.fromNumber(Number.MIN_VALUE).eq(ratio(1n, 2n ** (1023n + 51n))));
+
+    assert.isTrue(
+      Ratio.fromNumber(98304.000000000014551915228366851806640625).eq(ratio(6755399441055745n, 68719476736n))
+    );
+    assert.isTrue(
+      Ratio.fromNumber(3.641632560655153838524711318314075469970703125).eq(ratio(128128555024897n, 35184372088832n))
+    );
+
+    assert.throws(() => Ratio.fromNumber(Number.NaN));
+    assert.throws(() => Ratio.fromNumber(Number.POSITIVE_INFINITY));
+    assert.throws(() => Ratio.fromNumber(Number.NEGATIVE_INFINITY));
+  });
+});
+
 describe('standard operators', () => {
   it('inv', () => {
     assert.isTrue(new Ratio(1, 2).inv().eq(new Ratio(2, 1)));
