@@ -14,7 +14,7 @@ npm i git+https://gitbucket.littleescaper.net/gitbucket/git/tomoda/Rational.git
 const { ratio } = require('rational');
 
 // 7/6
-console.log(ratio(1, 2).add(2, 3).toString());
+console.log(ratio(1, 2).add(ratio(2, 3)).toString());
 // true
 console.log(ratio(7, 6).eq(ratio(1, 2).add(ratio(1, 2))));
 ```
