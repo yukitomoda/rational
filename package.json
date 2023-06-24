@@ -19,7 +19,7 @@
     "build:esm": "tsc --module es2020 --outDir dist-esm",
     "postbuild": "npm run doc",
     "predoc": "npm run clean:doc",
-    "doc": "clean:doc & npx typedoc src/index.ts"
+    "doc": "npm run clean:doc & npx typedoc src/index.ts"
   },
   "author": "yt",
   "license": "MIT",
