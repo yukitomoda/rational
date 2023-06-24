@@ -2,6 +2,55 @@ import { Ratio, ratio } from '../src/Ratio';
 import { assert } from 'chai';
 import { it, describe } from 'mocha';
 
+describe('utils', () => {
+  it('ratio(bigint)', () => {
+    assert.isTrue(ratio(10n ** 100n).eq(Ratio.from(10n ** 100n)));
+    assert.isTrue(ratio(2n).eq(Ratio.from(2n)));
+    assert.isTrue(ratio(1n).eq(Ratio.from(1n)));
+    assert.isTrue(ratio(0n).eq(Ratio.from(0n)));
+    assert.isTrue(ratio(-1n).eq(Ratio.from(-1n)));
+    assert.isTrue(ratio(-2n).eq(Ratio.from(-2n)));
+    assert.isTrue(ratio(-(10n ** 100n)).eq(Ratio.from(-(10n ** 100n))));
+  });
+
+  it('ratio(number)', () => {
+    assert.isTrue(ratio(Number.MAX_VALUE).eq(Ratio.from(Number.MAX_VALUE)));
+    assert.isTrue(ratio(Number.MAX_SAFE_INTEGER).eq(Ratio.from(Number.MAX_SAFE_INTEGER)));
+    assert.isTrue(ratio(2).eq(Ratio.from(2)));
+    assert.isTrue(ratio(1).eq(Ratio.from(1)));
+    assert.isTrue(ratio(0.5).eq(Ratio.from(0.5)));
+    assert.isTrue(ratio(Number.MIN_VALUE).eq(Ratio.from(Number.MIN_VALUE)));
+    assert.isTrue(ratio(0).eq(Ratio.from(0)));
+    assert.isTrue(ratio(-Number.MIN_VALUE).eq(Ratio.from(-Number.MIN_VALUE)));
+    assert.isTrue(ratio(-0.5).eq(Ratio.from(-0.5)));
+    assert.isTrue(ratio(-1).eq(Ratio.from(-1)));
+    assert.isTrue(ratio(-2).eq(Ratio.from(-2)));
+    assert.isTrue(ratio(-Number.MAX_SAFE_INTEGER).eq(Ratio.from(-Number.MAX_SAFE_INTEGER)));
+    assert.isTrue(ratio(-Number.MAX_VALUE).eq(Ratio.from(-Number.MAX_VALUE)));
+  });
+
+  it('ratio(bigint, bigint)', () => {
+    assert.isTrue(ratio(7n ** 10n, 13n ** 10n).eq(Ratio.reduced(7n ** 10n, 13n ** 10n)));
+    assert.isTrue(ratio(2n, 1n).eq(Ratio.reduced(2n, 1n)));
+    assert.isTrue(ratio(1n, 2n).eq(Ratio.reduced(1n, 2n)));
+    assert.isTrue(ratio(0n, 1n).eq(Ratio.reduced(0n, 1n)));
+    assert.isTrue(ratio(-1n, 2n).eq(Ratio.reduced(-1n, 2n)));
+    assert.isTrue(ratio(-2n, 1n).eq(Ratio.reduced(-2n, 1n)));
+    assert.isTrue(ratio(-(7n ** 10n), 13n ** 10n).eq(Ratio.reduced(-(7n ** 10n), 13n ** 10n)));
+  });
+
+  it('ratio(number, number)', () => {
+    assert.isTrue(ratio(2, 1).eq(Ratio.reduced(2, 1)));
+    assert.isTrue(ratio(1, 2).eq(Ratio.reduced(1, 2)));
+    assert.isTrue(ratio(0, 1).eq(Ratio.reduced(0, 1)));
+    assert.isTrue(ratio(-1, 2).eq(Ratio.reduced(-1, 2)));
+    assert.isTrue(ratio(-2, 1).eq(Ratio.reduced(-2, 1)));
+
+    assert.throws(() => ratio(1.5, 2));
+    assert.throws(() => ratio(2, 1.5));
+  });
+});
+
 describe('properties', () => {
   it('isZero', () => {
     assert.isTrue(new Ratio(0, 1).isZero);
