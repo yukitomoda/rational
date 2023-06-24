@@ -8,6 +8,8 @@ import { type ConvertableToRatio, type ConvertableToBigInt } from './types';
 declare function ratio(value: ConvertableToRatio): Ratio;
 /**
  * 有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。
+ * この関数は分子、分母をともに整数として扱います。
+ * 整数でない数を分子、分母に指定する場合は、`ratio(a).div(ratio(b))`を使用してください。
  *
  * @param num 分子の値。この値は整数でなければなりません。
  * @param denom 分母の値。この値は整数でなければなりません。
