@@ -14,7 +14,7 @@ function isConvertableToBigInt(value: any): value is ConvertableToBigInt {
  */
 type ConvertableToRatio = Ratio | bigint | number;
 function isConvertableToRatio(value: any): value is ConvertableToRatio {
-  return value instanceof Ratio || typeof value === 'object';
+  return value instanceof Ratio || typeof value === 'bigint' || typeof value === 'number';
 }
 
 export { type ConvertableToBigInt, isConvertableToBigInt, type ConvertableToRatio, isConvertableToRatio };
