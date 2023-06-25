@@ -307,6 +307,33 @@ class Ratio {
   }
 
   /**
+   * この有理数以下で最大の整数を返します。
+   */
+  public floor(): bigint {
+    const reduced = this.getReduced();
+    if (reduced.denom === 1n) return reduced.num;
+    return reduced.num > 0 ? reduced.num / reduced.denom : reduced.num / reduced.denom - 1n;
+  }
+
+  /**
+   * この有理数以上で最小の整数を返します。
+   */
+  public ceil(): bigint {
+    const reduced = this.getReduced();
+    if (reduced.denom === 1n) return reduced.num;
+    return reduced.num > 0 ? reduced.num / reduced.denom + 1n : reduced.num / reduced.denom;
+  }
+
+  /**
+   * この有理数のうち1未満単位の値を取り除いた整数部を返します。
+   */
+  public trunc(): bigint {
+    const reduced = this.getReduced();
+    if (reduced.denom === 1n) return reduced.num;
+    return reduced.num / reduced.denom;
+  }
+
+  /**
    * この値を指定した小数点以下桁数までの10進法表記文字列に変換します。
    * @param digits 文字列に含める小数点以下桁数。
    */

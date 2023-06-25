@@ -286,3 +286,53 @@ describe('standard operators', () => {
     assert.isFalse(ratio(-(10n ** 10n - 1n), 1).leq(ratio(-(10n ** 10n), 1)));
   });
 });
+
+describe('floor, ceil, trunc', () => {
+  it('floor', () => {
+    assert.equal(ratio(10n ** 10n).floor(), 10n ** 10n);
+    assert.equal(ratio(1).floor(), 1n);
+    assert.equal(ratio(0).floor(), 0n);
+    assert.equal(ratio(-1).floor(), -1n);
+    assert.equal(ratio(-(10n ** 10n)).floor(), -(10n ** 10n));
+
+    assert.equal(ratio(9, 10).floor(), 0n);
+    assert.equal(ratio(10, 10).floor(), 1n);
+    assert.equal(ratio(11, 10).floor(), 1n);
+
+    assert.equal(ratio(-9, 10).floor(), -1n);
+    assert.equal(ratio(-10, 10).floor(), -1n);
+    assert.equal(ratio(-11, 10).floor(), -2n);
+  });
+
+  it('ceil', () => {
+    assert.equal(ratio(10n ** 10n).ceil(), 10n ** 10n);
+    assert.equal(ratio(1).ceil(), 1n);
+    assert.equal(ratio(0).ceil(), 0n);
+    assert.equal(ratio(-1).ceil(), -1n);
+    assert.equal(ratio(-(10n ** 10n)).ceil(), -(10n ** 10n));
+
+    assert.equal(ratio(9, 10).ceil(), 1n);
+    assert.equal(ratio(10, 10).ceil(), 1n);
+    assert.equal(ratio(11, 10).ceil(), 2n);
+
+    assert.equal(ratio(-9, 10).ceil(), 0n);
+    assert.equal(ratio(-10, 10).ceil(), -1n);
+    assert.equal(ratio(-11, 10).ceil(), -1n);
+  });
+
+  it('trunc', () => {
+    assert.equal(ratio(10n ** 10n).trunc(), 10n ** 10n);
+    assert.equal(ratio(1).trunc(), 1n);
+    assert.equal(ratio(0).trunc(), 0n);
+    assert.equal(ratio(-1).trunc(), -1n);
+    assert.equal(ratio(-(10n ** 10n)).trunc(), -(10n ** 10n));
+
+    assert.equal(ratio(9, 10).trunc(), 0n);
+    assert.equal(ratio(10, 10).trunc(), 1n);
+    assert.equal(ratio(11, 10).trunc(), 1n);
+
+    assert.equal(ratio(-9, 10).trunc(), 0n);
+    assert.equal(ratio(-10, 10).trunc(), -1n);
+    assert.equal(ratio(-11, 10).trunc(), -1n);
+  });
+});
