@@ -111,6 +111,26 @@ declare class Ratio {
      */
     eq(rhs: ConvertableToRatio): boolean;
     /**
+     * この有理数が指定した値より大きいときtrueを返します。そうでないとき、falseを返します。
+     * @param rhs 比較する値。
+     */
+    gt(rhs: ConvertableToRatio): boolean;
+    /**
+     * この有理数が指定した値より大きいか、指定した値と等しいときtrueを返します。そうでないとき、falseを返します。
+     * @param rhs 比較する値。
+     */
+    geq(rhs: ConvertableToRatio): boolean;
+    /**
+     * この有理数が指定した値より小さいときtrueを返します。そうでないとき、falseを返します。
+     * @param rhs 比較する値。
+     */
+    lt(rhs: ConvertableToRatio): boolean;
+    /**
+     * この有理数が指定した値より小さいか、指定した値と等しいときtrueを返します。そうでないとき、falseを返します。
+     * @param rhs 比較する値。
+     */
+    leq(rhs: ConvertableToRatio): boolean;
+    /**
      * この値を指定した小数点以下桁数までの10進法表記文字列に変換します。
      * @param digits 文字列に含める小数点以下桁数。
      */
