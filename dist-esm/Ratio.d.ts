@@ -131,6 +131,18 @@ declare class Ratio {
      */
     leq(rhs: ConvertableToRatio): boolean;
     /**
+     * この有理数以下で最大の整数を返します。
+     */
+    floor(): bigint;
+    /**
+     * この有理数以上で最小の整数を返します。
+     */
+    ceil(): bigint;
+    /**
+     * この有理数のうち1未満単位の値を取り除いた整数部を返します。
+     */
+    trunc(): bigint;
+    /**
      * この値を指定した小数点以下桁数までの10進法表記文字列に変換します。
      * @param digits 文字列に含める小数点以下桁数。
      */
