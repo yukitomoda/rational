@@ -209,4 +209,80 @@ describe('standard operators', () => {
       assert.isFalse(new Ratio(-1, -1).eq(-1n));
     });
   });
+
+  it('gt', () => {
+    assert.isTrue(ratio(10n ** 10n, 1).gt(ratio(10n ** 10n - 1n, 1)));
+    assert.isTrue(ratio(2, 3).gt(ratio(4, 7)));
+    assert.isTrue(ratio(2, 3).gt(ratio(0)));
+    assert.isTrue(ratio(0).gt(ratio(-2, 3)));
+    assert.isTrue(ratio(-4, 7).gt(ratio(-2, 3)));
+    assert.isTrue(ratio(-(10n ** 10n - 1n), 1).gt(ratio(-(10n ** 10n), 1)));
+
+    assert.isFalse(ratio(10n ** 10n, 1).gt(ratio(10n ** 10n, 1)));
+    assert.isFalse(ratio(10n ** 10n - 1n, 1).gt(ratio(10n ** 10n, 1)));
+    assert.isFalse(ratio(4, 7).gt(ratio(4, 7)));
+    assert.isFalse(ratio(4, 7).gt(ratio(2, 3)));
+    assert.isFalse(ratio(0).gt(ratio(0)));
+    assert.isFalse(ratio(-2, 3).gt(ratio(-4, 7)));
+    assert.isFalse(ratio(-4, 7).gt(ratio(-4, 7)));
+    assert.isFalse(ratio(-(10n ** 10n), 1).gt(ratio(-(10n ** 10n - 1n), 1)));
+    assert.isFalse(ratio(-(10n ** 10n), 1).gt(ratio(-(10n ** 10n), 1)));
+  });
+
+  it('geq', () => {
+    assert.isTrue(ratio(10n ** 10n, 1).geq(ratio(10n ** 10n, 1)));
+    assert.isTrue(ratio(10n ** 10n, 1).geq(ratio(10n ** 10n - 1n, 1)));
+    assert.isTrue(ratio(4, 7).geq(ratio(4, 7)));
+    assert.isTrue(ratio(2, 3).geq(ratio(4, 7)));
+    assert.isTrue(ratio(2, 3).geq(ratio(0)));
+    assert.isTrue(ratio(0).geq(ratio(0)));
+    assert.isTrue(ratio(0).geq(ratio(-2, 3)));
+    assert.isTrue(ratio(-4, 7).geq(ratio(-2, 3)));
+    assert.isTrue(ratio(-4, 7).geq(ratio(-4, 7)));
+    assert.isTrue(ratio(-(10n ** 10n - 1n), 1).geq(ratio(-(10n ** 10n), 1)));
+    assert.isTrue(ratio(-(10n ** 10n), 1).geq(ratio(-(10n ** 10n), 1)));
+
+    assert.isFalse(ratio(10n ** 10n - 1n, 1).geq(ratio(10n ** 10n, 1)));
+    assert.isFalse(ratio(4, 7).geq(ratio(2, 3)));
+    assert.isFalse(ratio(-2, 3).geq(ratio(-4, 7)));
+    assert.isFalse(ratio(-(10n ** 10n), 1).geq(ratio(-(10n ** 10n - 1n), 1)));
+  });
+
+  it('lt', () => {
+    assert.isTrue(ratio(10n ** 10n - 1n, 1).lt(ratio(10n ** 10n, 1)));
+    assert.isTrue(ratio(4, 7).lt(ratio(2, 3)));
+    assert.isTrue(ratio(0).lt(ratio(2, 3)));
+    assert.isTrue(ratio(-2, 3).lt(ratio(0)));
+    assert.isTrue(ratio(-2, 3).lt(ratio(-4, 7)));
+    assert.isTrue(ratio(-(10n ** 10n), 1).lt(ratio(-(10n ** 10n - 1n), 1)));
+
+    assert.isFalse(ratio(10n ** 10n, 1).lt(ratio(10n ** 10n, 1)));
+    assert.isFalse(ratio(10n ** 10n, 1).lt(ratio(10n ** 10n - 1n, 1)));
+    assert.isFalse(ratio(4, 7).lt(ratio(4, 7)));
+    assert.isFalse(ratio(2, 3).lt(ratio(4, 7)));
+    assert.isFalse(ratio(0).lt(ratio(0)));
+    assert.isFalse(ratio(-4, 7).lt(ratio(-2, 3)));
+    assert.isFalse(ratio(-4, 7).lt(ratio(-4, 7)));
+    assert.isFalse(ratio(-(10n ** 10n - 1n), 1).lt(ratio(-(10n ** 10n), 1)));
+    assert.isFalse(ratio(-(10n ** 10n), 1).lt(ratio(-(10n ** 10n), 1)));
+  });
+
+  it('leq', () => {
+    assert.isTrue(ratio(10n ** 10n, 1).leq(ratio(10n ** 10n, 1)));
+    assert.isTrue(ratio(10n ** 10n - 1n, 1).leq(ratio(10n ** 10n, 1)));
+    assert.isTrue(ratio(4, 7).leq(ratio(4, 7)));
+    assert.isTrue(ratio(4, 7).leq(ratio(2, 3)));
+    assert.isTrue(ratio(0).leq(ratio(2, 3)));
+    assert.isTrue(ratio(0).leq(ratio(0)));
+    assert.isTrue(ratio(-2, 3).leq(ratio(0)));
+    assert.isTrue(ratio(-2, 3).leq(ratio(-4, 7)));
+    assert.isTrue(ratio(-4, 7).leq(ratio(-4, 7)));
+    assert.isTrue(ratio(-(10n ** 10n), 1).leq(ratio(-(10n ** 10n - 1n), 1)));
+    assert.isTrue(ratio(-(10n ** 10n), 1).leq(ratio(-(10n ** 10n), 1)));
+
+    assert.isFalse(ratio(10n ** 10n, 1).leq(ratio(10n ** 10n - 1n, 1)));
+    assert.isFalse(ratio(2, 3).leq(ratio(4, 7)));
+    assert.isFalse(ratio(-4, 7).leq(ratio(-2, 3)));
+    assert.isFalse(ratio(-(10n ** 10n - 1n), 1).leq(ratio(-(10n ** 10n), 1)));
+  });
 });
