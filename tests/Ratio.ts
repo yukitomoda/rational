@@ -150,6 +150,13 @@ describe('conversion', () => {
     assert.throws(() => Ratio.fromNumber(Number.POSITIVE_INFINITY));
     assert.throws(() => Ratio.fromNumber(Number.NEGATIVE_INFINITY));
   });
+
+  describe('parse', () => {
+    describe('fraction', () => {
+      assert.isTrue(Ratio.parse('1/3').eq(ratio(1, 3)));
+      assert.isTrue(Ratio.parse('-1/3').eq(ratio(-1, 3)));
+    });
+  });
 });
 
 describe('standard operators', () => {

@@ -5,6 +5,7 @@ import {
   isConvertableToRatio,
   isConvertableToBigInt,
 } from './types';
+import { parse } from './parse/parser';
 
 /**
  * 有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。
@@ -140,6 +141,20 @@ class Ratio {
     if (isNegative) num = -num;
 
     return Ratio.reduced(num, denom);
+  }
+
+  /**
+   * 指定した文字列をパースし、有理数に変換します。
+   * @param str パースする文字列。
+   * @example
+   * // -1.233333...(111/90)
+   * Ratio.parse('-1.2(3)');
+   * @example
+   * // 1/255
+   * Ratio.parse('1/0xFF');
+   */
+  public static parse(str: string): Ratio {
+    return parse(str);
   }
 
   private getReduced(): Ratio {
