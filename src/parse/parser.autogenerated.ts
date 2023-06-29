@@ -340,10 +340,10 @@ function peg$parse(input, options) {
  return {type: 'PointNumber', intPart: n.intPart, fracPart: n.fracPart, cyclicPart: n.cyclicPart, sign: s ?? 1n, exponent: 0n}; };// @ts-ignore
 
   var peg$f2 = function(n, f, c) {// @ts-ignore
- return {intPart: n, fracPart: f, cyclicPart: c}; };// @ts-ignore
+ return {type: 'PointNumber', intPart: n, fracPart: f, cyclicPart: c}; };// @ts-ignore
 
   var peg$f3 = function(n, c) {// @ts-ignore
- return {intPart: n, fracPart: null, cyclicPart: c}; };// @ts-ignore
+ return {type: 'PointNumber', intPart: n, cyclicPart: c}; };// @ts-ignore
 
   var peg$f4 = function(c) {// @ts-ignore
  return c; };// @ts-ignore
@@ -361,10 +361,10 @@ function peg$parse(input, options) {
  return {type: 'PointNumber', intPart: n.intPart, fracPart: n.fracPart, cyclicPart: n.cyclicPart, sign: s ?? 1n, exponent: 0n}; };// @ts-ignore
 
   var peg$f9 = function(n, f, c) {// @ts-ignore
- return {intPart: n, fracPart: f, cyclicPart: c}; };// @ts-ignore
+ return {type: 'PointNumber', intPart: n, fracPart: f, cyclicPart: c}; };// @ts-ignore
 
   var peg$f10 = function(n, c) {// @ts-ignore
- return {intPart: n, fracPart: null, cyclicPart: c}; };// @ts-ignore
+ return {type: 'PointNumber', intPart: n, cyclicPart: c}; };// @ts-ignore
 
   var peg$f11 = function(c) {// @ts-ignore
  return c; };// @ts-ignore
@@ -382,10 +382,10 @@ function peg$parse(input, options) {
  return {type: 'PointNumber', intPart: n.intPart, fracPart: n.fracPart, cyclicPart: n.cyclicPart, sign: s ?? 1n, exponent: e ?? 0n}; };// @ts-ignore
 
   var peg$f16 = function(n, f, c) {// @ts-ignore
- return {intPart: n, fracPart: f, cyclicPart: c}; };// @ts-ignore
+ return {type: 'PointNumber', intPart: n, fracPart: f, cyclicPart: c}; };// @ts-ignore
 
   var peg$f17 = function(n, c) {// @ts-ignore
- return {intPart: n, fracPart: null, cyclicPart: c}; };// @ts-ignore
+ return {type: 'PointNumber', intPart: n, cyclicPart: c}; };// @ts-ignore
 
   var peg$f18 = function(c) {// @ts-ignore
  return c; };// @ts-ignore
@@ -406,10 +406,10 @@ function peg$parse(input, options) {
  return {type: 'PointNumber', intPart: n.intPart, fracPart: n.fracPart, cyclicPart: n.cyclicPart, sign: s ?? 1n, exponent: 0n}; };// @ts-ignore
 
   var peg$f24 = function(n, f, c) {// @ts-ignore
- return {intPart: n, fracPart: f, cyclicPart: c}; };// @ts-ignore
+ return {type: 'PointNumber', intPart: n, fracPart: f, cyclicPart: c}; };// @ts-ignore
 
   var peg$f25 = function(n, c) {// @ts-ignore
- return {intPart: n, fracPart: null, cyclicPart: c}; };// @ts-ignore
+ return {type: 'PointNumber', intPart: n, cyclicPart: c}; };// @ts-ignore
 
   var peg$f26 = function(c) {// @ts-ignore
  return c; };// @ts-ignore
@@ -749,6 +749,34 @@ peg$parsePointNumber() {
 
 // @ts-ignore
   function // @ts-ignore
+peg$parseUnsignedPointNumber() {
+// @ts-ignore
+    var s0;
+
+// @ts-ignore
+    s0 = peg$parseUnsignedBinaryPointNumber();
+// @ts-ignore
+    if (s0 === peg$FAILED) {
+// @ts-ignore
+      s0 = peg$parseUnsignedOctalPointNumber();
+// @ts-ignore
+      if (s0 === peg$FAILED) {
+// @ts-ignore
+        s0 = peg$parseUnsignedDecimalPointNumber();
+// @ts-ignore
+        if (s0 === peg$FAILED) {
+// @ts-ignore
+          s0 = peg$parseUnsignedHexPointNumber();
+        }
+      }
+    }
+
+// @ts-ignore
+    return s0;
+  }
+
+// @ts-ignore
+  function // @ts-ignore
 peg$parseFractionNumber() {
 // @ts-ignore
     var s0, s1, s2, s3;
@@ -756,7 +784,7 @@ peg$parseFractionNumber() {
 // @ts-ignore
     s0 = peg$currPos;
 // @ts-ignore
-    s1 = peg$parseInteger();
+    s1 = peg$parseNumerator();
 // @ts-ignore
     if (s1 !== peg$FAILED) {
 // @ts-ignore
@@ -775,7 +803,7 @@ peg$parseFractionNumber() {
 // @ts-ignore
       if (s2 !== peg$FAILED) {
 // @ts-ignore
-        s3 = peg$parseUnsignedInteger();
+        s3 = peg$parseDenominator();
 // @ts-ignore
         if (s3 !== peg$FAILED) {
 // @ts-ignore
@@ -802,6 +830,42 @@ peg$parseFractionNumber() {
       peg$currPos = s0;
 // @ts-ignore
       s0 = peg$FAILED;
+    }
+
+// @ts-ignore
+    return s0;
+  }
+
+// @ts-ignore
+  function // @ts-ignore
+peg$parseNumerator() {
+// @ts-ignore
+    var s0;
+
+// @ts-ignore
+    s0 = peg$parseInteger();
+// @ts-ignore
+    if (s0 === peg$FAILED) {
+// @ts-ignore
+      s0 = peg$parsePointNumber();
+    }
+
+// @ts-ignore
+    return s0;
+  }
+
+// @ts-ignore
+  function // @ts-ignore
+peg$parseDenominator() {
+// @ts-ignore
+    var s0;
+
+// @ts-ignore
+    s0 = peg$parseUnsignedInteger();
+// @ts-ignore
+    if (s0 === peg$FAILED) {
+// @ts-ignore
+      s0 = peg$parseUnsignedPointNumber();
     }
 
 // @ts-ignore
@@ -2856,11 +2920,18 @@ export type PointNumber =
   | OctalPointNumber
   | DecimalPointNumber
   | HexPointNumber;
+export type UnsignedPointNumber =
+  | UnsignedBinaryPointNumber
+  | UnsignedOctalPointNumber
+  | UnsignedDecimalPointNumber
+  | UnsignedHexPointNumber;
 export type FractionNumber = {
   type: "FractionNumber";
-  numerator: Integer;
-  denominator: UnsignedInteger;
+  numerator: Numerator;
+  denominator: Denominator;
 };
+export type Numerator = Integer | PointNumber;
+export type Denominator = UnsignedInteger | UnsignedPointNumber;
 export type Integer =
   | BinaryInteger
   | OctalInteger
@@ -2881,13 +2952,14 @@ export type BinaryPointNumber = {
 };
 export type UnsignedBinaryPointNumber =
   | {
+      type: "PointNumber";
       intPart: BinaryDigits;
       fracPart: BinaryDigits;
       cyclicPart: BinaryPointNumberCyclicPart | null;
     }
   | {
+      type: "PointNumber";
       intPart: BinaryDigits;
-      fracPart: null;
       cyclicPart: BinaryPointNumberCyclicPart;
     };
 export type BinaryPointNumberCyclicPart = BinaryDigits;
@@ -2917,13 +2989,14 @@ export type OctalPointNumber = {
 };
 export type UnsignedOctalPointNumber =
   | {
+      type: "PointNumber";
       intPart: OctalDigits;
       fracPart: OctalDigits;
       cyclicPart: OctalPointNumberCyclicPart | null;
     }
   | {
+      type: "PointNumber";
       intPart: OctalDigits;
-      fracPart: null;
       cyclicPart: OctalPointNumberCyclicPart;
     };
 export type OctalPointNumberCyclicPart = OctalDigits;
@@ -2953,13 +3026,14 @@ export type DecimalPointNumber = {
 };
 export type UnsignedDecimalPointNumber =
   | {
+      type: "PointNumber";
       intPart: DecimalDigits;
       fracPart: DecimalDigits;
       cyclicPart: DecimalPointNumberCyclicPart | null;
     }
   | {
+      type: "PointNumber";
       intPart: DecimalDigits;
-      fracPart: null;
       cyclicPart: DecimalPointNumberCyclicPart;
     };
 export type DecimalPointNumberCyclicPart = DecimalDigits;
@@ -2991,13 +3065,14 @@ export type HexPointNumber = {
 };
 export type UnsignedHexPointNumber =
   | {
+      type: "PointNumber";
       intPart: HexDigits;
       fracPart: HexDigits;
       cyclicPart: HexPointNumberCyclicPart | null;
     }
   | {
+      type: "PointNumber";
       intPart: HexDigits;
-      fracPart: null;
       cyclicPart: HexPointNumberCyclicPart;
     };
 export type HexPointNumberCyclicPart = HexDigits;

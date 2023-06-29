@@ -3,16 +3,16 @@ declare type Number = PointNumber | FractionNumber | Integer;
 declare interface PointNumber {
   type: 'PointNumber';
   intPart: Digits;
-  fracPart?: Digits;
-  cyclicPart?: Digits;
-  sign: 1n | -1n;
-  exponent: bigint;
+  fracPart?: Digits | null;
+  cyclicPart?: Digits | null;
+  sign?: 1n | -1n;
+  exponent?: bigint;
 }
 
 declare interface FractionNumber {
   type: 'FractionNumber';
-  numerator: Integer;
-  denominator: Integer;
+  numerator: Integer | PointNumber;
+  denominator: Integer | PointNumber;
 }
 
 declare interface Integer {
