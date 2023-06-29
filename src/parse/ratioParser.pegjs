@@ -35,15 +35,14 @@ OctalDigit = [0-7]
 // Decimal Numbers
 DecimalPointNumber = s:SignSpecifier? n:UnsignedDecimalPointNumber e:DecimalExponentSpecifier?
 	{ return {type: 'PointNumber', intPart: n.intPart, fracPart: n.fracPart, cyclicPart: n.cyclicPart, sign: s ?? 1n, exponent: e ?? 0n}; }
-UnsignedDecimalPointNumber = n:DecimalDigits_StartsWithNonZero '.' f:DecimalDigits c:DecimalPointNumberCyclicPart? { return {intPart: n, fracPart: f, cyclicPart: c}; }
-	/ n:DecimalDigits_StartsWithNonZero '.' c:DecimalPointNumberCyclicPart { return {intPart: n, fracPart: null, cyclicPart: c}; }
+UnsignedDecimalPointNumber = n:DecimalDigits '.' f:DecimalDigits c:DecimalPointNumberCyclicPart? { return {intPart: n, fracPart: f, cyclicPart: c}; }
+	/ n:DecimalDigits '.' c:DecimalPointNumberCyclicPart { return {intPart: n, fracPart: null, cyclicPart: c}; }
 DecimalPointNumberCyclicPart = '(' c:DecimalDigits ')' { return c; } 
 DecimalInteger = s:SignSpecifier? n:UnsignedDecimalInteger
 	{ return {type: 'Integer', base: n.base, sign: s ?? 1n, number: n.number, exponent: n.exponent}; }
-UnsignedDecimalInteger = n:DecimalDigits_StartsWithNonZero e:DecimalExponentSpecifier?
+UnsignedDecimalInteger = n:DecimalDigits e:DecimalExponentSpecifier?
 	{ return {type: 'Integer', base: n.base, sign: 1n, number: n.number, exponent: e ?? 0n}} 
 DecimalExponentSpecifier = [eE] s:SignSpecifier? e:DecimalDigits { return (s ?? 1n) * e.number; }
-DecimalDigits_StartsWithNonZero =  n:$(DecimalNonZeroDigit DecimalDigit*) { return {base: 10n, number:BigInt(n), length: n.length }; }
 DecimalDigits = n:$(DecimalDigit+) { return {base: 10n, number:BigInt(n), length: n.length }; }
 DecimalNonZeroDigit = [1-9]
 DecimalDigit = [0-9]
