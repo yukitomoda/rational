@@ -378,14 +378,14 @@ function peg$parse(input, options) {
   var peg$f14 = function(n) {// @ts-ignore
  return {base: 8n, number:BigInt(`0o${n}`), length: n.length }; };// @ts-ignore
 
-  var peg$f15 = function(s, n, e) {// @ts-ignore
- return {type: 'PointNumber', intPart: n.intPart, fracPart: n.fracPart, cyclicPart: n.cyclicPart, sign: s ?? 1n, exponent: e ?? 0n}; };// @ts-ignore
+  var peg$f15 = function(s, n) {// @ts-ignore
+ return {type: 'PointNumber', intPart: n.intPart, fracPart: n.fracPart, cyclicPart: n.cyclicPart, sign: s ?? 1n, exponent: n.exponent}; };// @ts-ignore
 
-  var peg$f16 = function(n, f, c) {// @ts-ignore
- return {type: 'PointNumber', intPart: n, fracPart: f, cyclicPart: c}; };// @ts-ignore
+  var peg$f16 = function(n, f, c, e) {// @ts-ignore
+ return {type: 'PointNumber', intPart: n, fracPart: f, cyclicPart: c, exponent: e ?? 0n}; };// @ts-ignore
 
-  var peg$f17 = function(n, c) {// @ts-ignore
- return {type: 'PointNumber', intPart: n, cyclicPart: c}; };// @ts-ignore
+  var peg$f17 = function(n, c, e) {// @ts-ignore
+ return {type: 'PointNumber', intPart: n, cyclicPart: c, exponent: e ?? 0n}; };// @ts-ignore
 
   var peg$f18 = function(c) {// @ts-ignore
  return c; };// @ts-ignore
@@ -1840,7 +1840,7 @@ peg$parseOctalDigit() {
   function // @ts-ignore
 peg$parseDecimalPointNumber() {
 // @ts-ignore
-    var s0, s1, s2, s3;
+    var s0, s1, s2;
 
 // @ts-ignore
     s0 = peg$currPos;
@@ -1856,16 +1856,9 @@ peg$parseDecimalPointNumber() {
 // @ts-ignore
     if (s2 !== peg$FAILED) {
 // @ts-ignore
-      s3 = peg$parseDecimalExponentSpecifier();
-// @ts-ignore
-      if (s3 === peg$FAILED) {
-// @ts-ignore
-        s3 = null;
-      }
-// @ts-ignore
       peg$savedPos = s0;
 // @ts-ignore
-      s0 = peg$f15(s1, s2, s3);
+      s0 = peg$f15(s1, s2);
 // @ts-ignore
     } else {
 // @ts-ignore
@@ -1882,7 +1875,7 @@ peg$parseDecimalPointNumber() {
   function // @ts-ignore
 peg$parseUnsignedDecimalPointNumber() {
 // @ts-ignore
-    var s0, s1, s2, s3, s4;
+    var s0, s1, s2, s3, s4, s5;
 
 // @ts-ignore
     s0 = peg$currPos;
@@ -1917,9 +1910,16 @@ peg$parseUnsignedDecimalPointNumber() {
             s4 = null;
           }
 // @ts-ignore
+          s5 = peg$parseDecimalExponentSpecifier();
+// @ts-ignore
+          if (s5 === peg$FAILED) {
+// @ts-ignore
+            s5 = null;
+          }
+// @ts-ignore
           peg$savedPos = s0;
 // @ts-ignore
-          s0 = peg$f16(s1, s3, s4);
+          s0 = peg$f16(s1, s3, s4, s5);
 // @ts-ignore
         } else {
 // @ts-ignore
@@ -1969,9 +1969,16 @@ peg$parseUnsignedDecimalPointNumber() {
 // @ts-ignore
           if (s3 !== peg$FAILED) {
 // @ts-ignore
+            s4 = peg$parseDecimalExponentSpecifier();
+// @ts-ignore
+            if (s4 === peg$FAILED) {
+// @ts-ignore
+              s4 = null;
+            }
+// @ts-ignore
             peg$savedPos = s0;
 // @ts-ignore
-            s0 = peg$f17(s1, s3);
+            s0 = peg$f17(s1, s3, s4);
 // @ts-ignore
           } else {
 // @ts-ignore
@@ -3022,7 +3029,7 @@ export type DecimalPointNumber = {
   fracPart: any;
   cyclicPart: any;
   sign: 1n | NonNullable<SignSpecifier | null>;
-  exponent: 0n | NonNullable<DecimalExponentSpecifier | null>;
+  exponent: any;
 };
 export type UnsignedDecimalPointNumber =
   | {
@@ -3030,11 +3037,13 @@ export type UnsignedDecimalPointNumber =
       intPart: DecimalDigits;
       fracPart: DecimalDigits;
       cyclicPart: DecimalPointNumberCyclicPart | null;
+      exponent: 0n | NonNullable<DecimalExponentSpecifier | null>;
     }
   | {
       type: "PointNumber";
       intPart: DecimalDigits;
       cyclicPart: DecimalPointNumberCyclicPart;
+      exponent: 0n | NonNullable<DecimalExponentSpecifier | null>;
     };
 export type DecimalPointNumberCyclicPart = DecimalDigits;
 export type DecimalInteger = {
