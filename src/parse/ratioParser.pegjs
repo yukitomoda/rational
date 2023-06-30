@@ -2,13 +2,13 @@ Root = Number
 
 Number = FractionNumber / PointNumber / Integer
 
-PointNumber = BinaryPointNumber / OctalPointNumber / DecimalPointNumber / HexPointNumber
-UnsignedPointNumber = UnsignedBinaryPointNumber / UnsignedOctalPointNumber / UnsignedDecimalPointNumber / UnsignedHexPointNumber
+PointNumber = BinaryPointNumber / OctalPointNumber / HexPointNumber / DecimalPointNumber
+UnsignedPointNumber = UnsignedBinaryPointNumber / UnsignedOctalPointNumber / UnsignedHexPointNumber / UnsignedDecimalPointNumber
 FractionNumber = n:Numerator '/' d:Denominator { return {type: 'FractionNumber', numerator: n, denominator: d}}
 Numerator =  PointNumber / Integer
 Denominator = UnsignedPointNumber / UnsignedInteger
-Integer = BinaryInteger / OctalInteger / DecimalInteger / HexInteger
-UnsignedInteger = UnsignedBinaryInteger / UnsignedOctalInteger / UnsignedDecimalInteger / UnsignedHexInteger
+Integer = BinaryInteger / OctalInteger / HexInteger / DecimalInteger
+UnsignedInteger = UnsignedBinaryInteger / UnsignedOctalInteger / UnsignedHexInteger / UnsignedDecimalInteger
 
 
 // Binary Numbers (0b...)

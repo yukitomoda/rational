@@ -734,11 +734,11 @@ peg$parsePointNumber() {
 // @ts-ignore
       if (s0 === peg$FAILED) {
 // @ts-ignore
-        s0 = peg$parseDecimalPointNumber();
+        s0 = peg$parseHexPointNumber();
 // @ts-ignore
         if (s0 === peg$FAILED) {
 // @ts-ignore
-          s0 = peg$parseHexPointNumber();
+          s0 = peg$parseDecimalPointNumber();
         }
       }
     }
@@ -762,11 +762,11 @@ peg$parseUnsignedPointNumber() {
 // @ts-ignore
       if (s0 === peg$FAILED) {
 // @ts-ignore
-        s0 = peg$parseUnsignedDecimalPointNumber();
+        s0 = peg$parseUnsignedHexPointNumber();
 // @ts-ignore
         if (s0 === peg$FAILED) {
 // @ts-ignore
-          s0 = peg$parseUnsignedHexPointNumber();
+          s0 = peg$parseUnsignedDecimalPointNumber();
         }
       }
     }
@@ -887,11 +887,11 @@ peg$parseInteger() {
 // @ts-ignore
       if (s0 === peg$FAILED) {
 // @ts-ignore
-        s0 = peg$parseDecimalInteger();
+        s0 = peg$parseHexInteger();
 // @ts-ignore
         if (s0 === peg$FAILED) {
 // @ts-ignore
-          s0 = peg$parseHexInteger();
+          s0 = peg$parseDecimalInteger();
         }
       }
     }
@@ -915,11 +915,11 @@ peg$parseUnsignedInteger() {
 // @ts-ignore
       if (s0 === peg$FAILED) {
 // @ts-ignore
-        s0 = peg$parseUnsignedDecimalInteger();
+        s0 = peg$parseUnsignedHexInteger();
 // @ts-ignore
         if (s0 === peg$FAILED) {
 // @ts-ignore
-          s0 = peg$parseUnsignedHexInteger();
+          s0 = peg$parseUnsignedDecimalInteger();
         }
       }
     }
@@ -2925,13 +2925,13 @@ export type Number_1 = FractionNumber | PointNumber | Integer;
 export type PointNumber =
   | BinaryPointNumber
   | OctalPointNumber
-  | DecimalPointNumber
-  | HexPointNumber;
+  | HexPointNumber
+  | DecimalPointNumber;
 export type UnsignedPointNumber =
   | UnsignedBinaryPointNumber
   | UnsignedOctalPointNumber
-  | UnsignedDecimalPointNumber
-  | UnsignedHexPointNumber;
+  | UnsignedHexPointNumber
+  | UnsignedDecimalPointNumber;
 export type FractionNumber = {
   type: "FractionNumber";
   numerator: Numerator;
@@ -2942,13 +2942,13 @@ export type Denominator = UnsignedPointNumber | UnsignedInteger;
 export type Integer =
   | BinaryInteger
   | OctalInteger
-  | DecimalInteger
-  | HexInteger;
+  | HexInteger
+  | DecimalInteger;
 export type UnsignedInteger =
   | UnsignedBinaryInteger
   | UnsignedOctalInteger
-  | UnsignedDecimalInteger
-  | UnsignedHexInteger;
+  | UnsignedHexInteger
+  | UnsignedDecimalInteger;
 export type BinaryPointNumber = {
   type: "PointNumber";
   intPart: any;
