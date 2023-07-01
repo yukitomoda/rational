@@ -244,6 +244,7 @@ describe('conversion', () => {
         assert.isTrue(Ratio.parse('0.(3)').eq(ratio(1, 3)));
         assert.isTrue(Ratio.parse('-1.2(3)').eq(ratio(-111, 90)));
         assert.isTrue(Ratio.parse('0.(102)').eq(ratio(34, 333)));
+        assert.isTrue(Ratio.parse('1.23e-3').eq(ratio(123, 10 ** 5)));
         assert.isTrue(Ratio.parse('12.3(45)e3').eq(ratio(12222 * 10 ** 3, 10 * (10 ** 2 - 1))));
       });
 

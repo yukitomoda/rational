@@ -46,7 +46,7 @@ function convertPointNumber(p: PointNumber): Ratio {
     if (p.exponent > 0) {
       numerator *= p.intPart.base ** p.exponent;
     } else if (p.exponent < 0) {
-      denominator *= p.intPart.base ** p.exponent;
+      denominator *= p.intPart.base ** -p.exponent;
     }
   }
 
