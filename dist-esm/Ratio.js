@@ -28,14 +28,14 @@ class Ratio {
      * そうでないとき、falseを返します。
      */
     get isNegative() {
-        return this.num < 0 !== this.denom < 0;
+        return !this.isZero && this.num < 0 !== this.denom < 0;
     }
     /**
      * この有理数が0より大きい場合にtrueを返します。
      * そうでないとき、falseを返します。
      */
     get isPositive() {
-        return this.num <= 0 === this.denom <= 0;
+        return !this.isZero && this.num < 0 === this.denom < 0;
     }
     /**
      * 指定した分子、分母で有理数のインスタンスを作成します。
