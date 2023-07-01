@@ -100,7 +100,7 @@ class Ratio {
    * そうでないとき、falseを返します。
    */
   public get isNegative(): boolean {
-    return this.num < 0 !== this.denom < 0;
+    return !this.isZero && this.num < 0 !== this.denom < 0;
   }
 
   /**
@@ -108,7 +108,7 @@ class Ratio {
    * そうでないとき、falseを返します。
    */
   public get isPositive(): boolean {
-    return this.num <= 0 === this.denom <= 0;
+    return !this.isZero && this.num < 0 === this.denom < 0;
   }
 
   /**

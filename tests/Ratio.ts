@@ -65,6 +65,7 @@ describe('properties', () => {
     assert.isFalse(new Ratio(-1, 10n ** 20n).isPositive);
     assert.isFalse(new Ratio(1, -(10n ** 20n)).isPositive);
     assert.isFalse(new Ratio(0, 1).isPositive);
+    assert.isFalse(new Ratio(0, -1).isPositive);
     assert.isFalse(new Ratio(0, 10000000n).isPositive);
   });
 
@@ -74,6 +75,7 @@ describe('properties', () => {
     assert.isFalse(new Ratio(1, 10n ** 20n).isNegative);
     assert.isFalse(new Ratio(-1, -(10n ** 20n)).isNegative);
     assert.isFalse(new Ratio(0, 1).isNegative);
+    assert.isFalse(new Ratio(0, -1).isNegative);
     assert.isFalse(new Ratio(0, 10000000n).isNegative);
   });
 });
