@@ -8,7 +8,7 @@ function isConvertableToBigInt(value) {
 }
 exports.isConvertableToBigInt = isConvertableToBigInt;
 function isConvertableToRatio(value) {
-    return value instanceof Ratio_1.Ratio || typeof value === 'bigint' || typeof value === 'number';
+    return value instanceof Ratio_1.Ratio || typeof value === 'bigint' || typeof value === 'number' || typeof value === 'string';
 }
 exports.isConvertableToRatio = isConvertableToRatio;
 //# sourceMappingURL=types.js.map

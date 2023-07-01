@@ -1,5 +1,6 @@
 import { abs, gcd, roundTo } from './BigMath';
 import { isConvertableToRatio, isConvertableToBigInt, } from './types';
+import { parse } from './parse/parser';
 function ratio(num, denom) {
     if (isConvertableToRatio(num) && denom == null) {
         return Ratio.from(num);
@@ -100,6 +101,9 @@ class Ratio {
         else if (typeof value === 'number') {
             return Ratio.fromNumber(value);
         }
+        else if (typeof value === 'string') {
+            return Ratio.parse(value);
+        }
         else {
             throw new TypeError();
         }
@@ -130,6 +134,19 @@ class Ratio {
         if (isNegative)
             num = -num;
         return Ratio.reduced(num, denom);
+    }
+    /**
+     * 指定した文字列をパースし、有理数に変換します。
+     * @param str パースする文字列。
+     * @example
+     * // -1.233333...(111/90)
+     * Ratio.parse('-1.2(3)');
+     * @example
+     * // 1/255
+     * Ratio.parse('1/0xFF');
+     */
+    static parse(str) {
+        return parse(str);
     }
     getReduced() {
         if (this._reducedCache != null)

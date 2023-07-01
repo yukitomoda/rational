@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ratio = exports.ratio = void 0;
 const BigMath_1 = require("./BigMath");
 const types_1 = require("./types");
+const parser_1 = require("./parse/parser");
 function ratio(num, denom) {
     if ((0, types_1.isConvertableToRatio)(num) && denom == null) {
         return Ratio.from(num);
@@ -104,6 +105,9 @@ class Ratio {
         else if (typeof value === 'number') {
             return Ratio.fromNumber(value);
         }
+        else if (typeof value === 'string') {
+            return Ratio.parse(value);
+        }
         else {
             throw new TypeError();
         }
@@ -134,6 +138,19 @@ class Ratio {
         if (isNegative)
             num = -num;
         return Ratio.reduced(num, denom);
+    }
+    /**
+     * 指定した文字列をパースし、有理数に変換します。
+     * @param str パースする文字列。
+     * @example
+     * // -1.233333...(111/90)
+     * Ratio.parse('-1.2(3)');
+     * @example
+     * // 1/255
+     * Ratio.parse('1/0xFF');
+     */
+    static parse(str) {
+        return (0, parser_1.parse)(str);
     }
     getReduced() {
         if (this._reducedCache != null)

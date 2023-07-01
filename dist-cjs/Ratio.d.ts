@@ -71,6 +71,17 @@ declare class Ratio {
      * @param value 有理数に変換する値。
      */
     static fromNumber(value: number): Ratio;
+    /**
+     * 指定した文字列をパースし、有理数に変換します。
+     * @param str パースする文字列。
+     * @example
+     * // -1.233333...(111/90)
+     * Ratio.parse('-1.2(3)');
+     * @example
+     * // 1/255
+     * Ratio.parse('1/0xFF');
+     */
+    static parse(str: string): Ratio;
     private getReduced;
     /**
      * この有理数を既約分数に変換した値を返します。
