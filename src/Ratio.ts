@@ -112,6 +112,8 @@ class Ratio {
       return new Ratio(value, 1n);
     } else if (typeof value === 'number') {
       return Ratio.fromNumber(value);
+    } else if (typeof value === 'string') {
+      return Ratio.parse(value);
     } else {
       throw new TypeError();
     }
