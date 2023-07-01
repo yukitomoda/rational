@@ -5,7 +5,7 @@ const BigMath_1 = require("./BigMath");
 const types_1 = require("./types");
 const parser_1 = require("./parse/parser");
 function ratio(num, denom) {
-    if ((0, types_1.isConvertableToRatio)(num) && denom == null) {
+    if ((typeof num === 'bigint' || typeof num === 'number' || typeof num === 'string') && denom == null) {
         return Ratio.from(num);
     }
     else if ((0, types_1.isConvertableToBigInt)(num) && (0, types_1.isConvertableToBigInt)(denom)) {

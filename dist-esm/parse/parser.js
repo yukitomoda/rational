@@ -37,7 +37,7 @@ function convertPointNumber(p) {
             numerator *= p.intPart.base ** p.exponent;
         }
         else if (p.exponent < 0) {
-            denominator *= p.intPart.base ** p.exponent;
+            denominator *= p.intPart.base ** -p.exponent;
         }
     }
     if (p.sign != null) {

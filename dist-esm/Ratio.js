@@ -1,8 +1,8 @@
 import { abs, gcd, roundTo } from './BigMath';
-import { isConvertableToRatio, isConvertableToBigInt, } from './types';
+import { isConvertableToBigInt } from './types';
 import { parse } from './parse/parser';
 function ratio(num, denom) {
-    if (isConvertableToRatio(num) && denom == null) {
+    if ((typeof num === 'bigint' || typeof num === 'number' || typeof num === 'string') && denom == null) {
         return Ratio.from(num);
     }
     else if (isConvertableToBigInt(num) && isConvertableToBigInt(denom)) {

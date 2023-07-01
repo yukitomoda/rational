@@ -1,11 +1,53 @@
 import { type ConvertableToRatio, type ConvertableToBigInt } from './types';
 /**
- * 有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。
+ * 指定した整数を表す有理数のインスタンスに変換します。
  *
  * @param value 有理数に変換する値。
- * @returns 既約分数の有理数インスタンス。
  */
-declare function ratio(value: ConvertableToRatio): Ratio;
+declare function ratio(value: bigint): Ratio;
+/**
+ * 指定した数値を有理数のインスタンスに変換します。
+ *
+ * この変換は実際の値を正確に再現しようと試みます。
+ * 例えば0.1のようなnumber型で正確に表現できないような値を変換した場合、
+ * 直感とは反するような結果に変換されることがあります。
+ * 表記通りの数値に変換したい場合は、ratio(string)を使用してください。
+ *
+ * @param value 有理数に変換する値。この値はNaN, Infinityであってはなりません。
+ */
+declare function ratio(value: number): Ratio;
+/**
+ * 指定した文字列を有理数のインスタンスに変換します。
+ *
+ * この変換では、
+ *
+ * - 整数形式: `123`
+ * - 小数形式: `1.2(3)`
+ * - 分数形式: `3/5`
+ *
+ * の三つの形式が指定できます。
+ *
+ * またそれぞれ、`0b`、`0o`、`0x`プレフィクスを付けることによって、2、8、16進数を記述できます。
+ *
+ * @example
+ * // 整数形式
+ * ratio('0xff');
+ * ratio('-123e5');
+ *
+ * // 小数形式
+ * ratio('1.23e8');
+ * // 小数部で()で囲った部分は、循環節とみなされます。
+ * ratio('-1.2(3)');
+ * ratio('0b10101111.(1110)');
+ *
+ * // 分数形式
+ * ratio('3/5');
+ * ratio('-4/3');
+ * ratio('0x0a/0xff');
+ *
+ * @param value
+ */
+declare function ratio(value: string): Ratio;
 /**
  * 有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。
  * この関数は分子、分母をともに整数として扱います。

@@ -19,22 +19,66 @@
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="ratio"><span class="tsd-kind-call-signature">ratio</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#ratio" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。</p>
+<div class="tsd-comment tsd-typography"><p>指定した整数を表す有理数のインスタンスに変換します。</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">value</span>: <a href="../types/ConvertableToRatio.html" class="tsd-signature-type tsd-kind-type-alias">ConvertableToRatio</a></h5>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">bigint</span></h5>
 <div class="tsd-comment tsd-typography"><p>有理数に変換する値。</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="../classes/Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4><p>既約分数の有理数インスタンス。</p>
-
+<h4 class="tsd-returns-title">Returns <a href="../classes/Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:16</li></ul></aside></li>
-<li class="tsd-signature tsd-anchor-link" id="ratio-1"><span class="tsd-kind-call-signature">ratio</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">num</span>, <span class="tsd-kind-parameter">denom</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#ratio-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li>Defined in Ratio.ts:10</li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="ratio-1"><span class="tsd-kind-call-signature">ratio</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#ratio-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>指定した数値を有理数のインスタンスに変換します。</p>
+<p>この変換は実際の値を正確に再現しようと試みます。
+例えば0.1のようなnumber型で正確に表現できないような値を変換した場合、
+直感とは反するような結果に変換されることがあります。
+表記通りの数値に変換したい場合は、ratio(string)を使用してください。</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>有理数に変換する値。この値はNaN, Infinityであってはなりません。</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="../classes/Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in Ratio.ts:21</li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="ratio-2"><span class="tsd-kind-call-signature">ratio</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#ratio-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>指定した文字列を有理数のインスタンスに変換します。</p>
+<p>この変換では、</p>
+<ul>
+<li>整数形式: <code>123</code></li>
+<li>小数形式: <code>1.2(3)</code></li>
+<li>分数形式: <code>3/5</code></li>
+</ul>
+<p>の三つの形式が指定できます。</p>
+<p>またそれぞれ、<code>0b</code>、<code>0o</code>、<code>0x</code>プレフィクスを付けることによって、2、8、16進数を記述できます。</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="../classes/Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a></h4>
+<div class="tsd-comment tsd-typography">
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-7">// 整数形式</span><br/><span class="hl-0">ratio</span><span class="hl-1">(</span><span class="hl-2">&#39;0xff&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">ratio</span><span class="hl-1">(</span><span class="hl-2">&#39;-123e5&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-7">// 小数形式</span><br/><span class="hl-0">ratio</span><span class="hl-1">(</span><span class="hl-2">&#39;1.23e8&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">// 小数部で()で囲った部分は、循環節とみなされます。</span><br/><span class="hl-0">ratio</span><span class="hl-1">(</span><span class="hl-2">&#39;-1.2(3)&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">ratio</span><span class="hl-1">(</span><span class="hl-2">&#39;0b10101111.(1110)&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-7">// 分数形式</span><br/><span class="hl-0">ratio</span><span class="hl-1">(</span><span class="hl-2">&#39;3/5&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">ratio</span><span class="hl-1">(</span><span class="hl-2">&#39;-4/3&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">ratio</span><span class="hl-1">(</span><span class="hl-2">&#39;0x0a/0xff&#39;</span><span class="hl-1">);</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in Ratio.ts:53</li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="ratio-3"><span class="tsd-kind-call-signature">ratio</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">num</span>, <span class="tsd-kind-parameter">denom</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/Ratio.html" class="tsd-signature-type tsd-kind-class">Ratio</a><a href="#ratio-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>有理数のインスタンスを作成して返します。有理数の作成の際には、あらかじめ既約分数に直されます。
 この関数は分子、分母をともに整数として扱います。
@@ -57,7 +101,7 @@
 
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in Ratio.ts:26</li></ul></aside></li></ul></section></div>
+<li>Defined in Ratio.ts:63</li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
