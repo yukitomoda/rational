@@ -216,6 +216,44 @@ describe('conversion', () => {
         assert.isTrue(Ratio.parse('0xABCDE/0o12345').eq(ratio(0xabcde, 0o12345)));
       });
     });
+
+    describe('pointNumber', () => {
+      it('binary', () => {
+        assert.isTrue(Ratio.parse('0b0.1').eq(ratio(0b1, 2 ** 1)));
+        assert.isTrue(Ratio.parse('0b10.01').eq(ratio(0b1001, 2 ** 2)));
+        assert.isTrue(Ratio.parse('-0b1.111').eq(ratio(-0b1111, 2 ** 3)));
+        assert.isTrue(Ratio.parse('-0b1.010(1)').eq(ratio(-0b1011, 2 ** 3)));
+        assert.isTrue(Ratio.parse('0b0.(1)').eq(ratio(1)));
+        assert.isTrue(Ratio.parse('0b101.(0)').eq(ratio(0b101)));
+        assert.isTrue(Ratio.parse('-0b1.(101)').eq(ratio(-0b1100, 2 ** 3 - 1)));
+      });
+
+      it('octal', () => {
+        assert.isTrue(Ratio.parse('0o0.7').eq(ratio(0o7, 8 ** 1)));
+        assert.isTrue(Ratio.parse('0o45.67').eq(ratio(0o4567, 8 ** 2)));
+        assert.isTrue(Ratio.parse('-0o3.456').eq(ratio(-0o3456, 8 ** 3)));
+        assert.isTrue(Ratio.parse('0o0.34(5)').eq(ratio(0o311, 8 ** 2 * (8 ** 1 - 1))));
+        assert.isTrue(Ratio.parse('0o0.(5)').eq(ratio(0o5, 8 ** 1 - 1)));
+        assert.isTrue(Ratio.parse('0o567.(1)').eq(ratio(0o5102, 8 ** 1 - 1)));
+        assert.isTrue(Ratio.parse('-0o123.(456)').eq(ratio(-0o123333, 8 ** 3 - 1)));
+      });
+
+      it('decimal', () => {
+        assert.isTrue(Ratio.parse('0.1').eq(ratio(1, 10)));
+        assert.isTrue(Ratio.parse('-1.2').eq(ratio(-12, 10)));
+        assert.isTrue(Ratio.parse('0.(3)').eq(ratio(1, 3)));
+        assert.isTrue(Ratio.parse('-1.2(3)').eq(ratio(-111, 90)));
+        assert.isTrue(Ratio.parse('0.(102)').eq(ratio(34, 333)));
+      });
+
+      it('hex', () => {
+        assert.isTrue(Ratio.parse('0x0.a').eq(ratio(0xa, 16)));
+        assert.isTrue(Ratio.parse('-0x1.2').eq(ratio(-0x12, 16)));
+        assert.isTrue(Ratio.parse('0x0.(b)').eq(ratio(0xb, 16 ** 1 - 1)));
+        assert.isTrue(Ratio.parse('-0xa.b(c)').eq(ratio(-0xa11, 16 ** 1 * (16 ** 1 - 1))));
+        assert.isTrue(Ratio.parse('0x0.(abc)').eq(ratio(0xabc, 16 ** 3 - 1)));
+      });
+    });
   });
 });
 
