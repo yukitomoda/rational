@@ -150,6 +150,142 @@ describe('conversion', () => {
     assert.throws(() => Ratio.fromNumber(Number.POSITIVE_INFINITY));
     assert.throws(() => Ratio.fromNumber(Number.NEGATIVE_INFINITY));
   });
+
+  describe('parse', () => {
+    describe('fractionNumber', () => {
+      it('binary', () => {
+        assert.isTrue(Ratio.parse('0b1/0b101').eq(ratio(0b1, 0b101)));
+        assert.isTrue(Ratio.parse('-0b1/0b101').eq(ratio(-0b1, 0b101)));
+        assert.isTrue(Ratio.parse('0b101/0b1').eq(ratio(0b101)));
+        assert.isTrue(Ratio.parse('-0b101/1').eq(ratio(-0b101)));
+        assert.isTrue(Ratio.parse('0b101.010/0b10.101').eq(ratio(0b101010, 0b10101)));
+        assert.isTrue(Ratio.parse('0b101.010/0b101').eq(ratio(0b101010, 0b101000)));
+        assert.isTrue(Ratio.parse('0b101/0b10.101').eq(ratio(0b101000, 0b10101)));
+        assert.throws(() => Ratio.parse('0b101/0b0'));
+        assert.throws(() => Ratio.parse('0b2/0b1'));
+      });
+
+      it('octal', () => {
+        assert.isTrue(Ratio.parse('0o1/0o147').eq(ratio(0o1, 0o147)));
+        assert.isTrue(Ratio.parse('-0o1/0o147').eq(ratio(-0o1, 0o147)));
+        assert.isTrue(Ratio.parse('0o756/0o1').eq(ratio(0o756)));
+        assert.isTrue(Ratio.parse('-0o756/1').eq(ratio(-0o756)));
+        assert.isTrue(Ratio.parse('0o123.456/0o134.567').eq(ratio(0o123456, 0o134567)));
+        assert.isTrue(Ratio.parse('0o123.456/0o147').eq(ratio(0o123456, 0o147000)));
+        assert.isTrue(Ratio.parse('0o123/0o147.345').eq(ratio(0o123000, 0o147345)));
+        assert.throws(() => Ratio.parse('0o6/0o0'));
+        assert.throws(() => Ratio.parse('0o8/0o1'));
+      });
+
+      it('decimal', () => {
+        assert.isTrue(Ratio.parse('1/3').eq(ratio(1, 3)));
+        assert.isTrue(Ratio.parse('-1/3').eq(ratio(-1, 3)));
+        assert.isTrue(Ratio.parse('7/1').eq(ratio(7)));
+        assert.isTrue(Ratio.parse('-7/1').eq(ratio(-7)));
+        assert.isTrue(Ratio.parse('1/4.56').eq(ratio(100, 456)));
+        assert.isTrue(Ratio.parse('1.23/4').eq(ratio(123, 400)));
+        assert.isTrue(Ratio.parse('12/4.56').eq(ratio(1200, 456)));
+        assert.isTrue(Ratio.parse('7e2/6e1').eq(ratio(700, 60)));
+        assert.isTrue(Ratio.parse('1.23e3/4.56e5').eq(ratio(1230, 456000)));
+        assert.throws(() => Ratio.parse('5/0'));
+      });
+
+      it('hex', () => {
+        assert.isTrue(Ratio.parse('0x1/0x17f').eq(ratio(0x1, 0x17f)));
+        assert.isTrue(Ratio.parse('-0x1/0x17F').eq(ratio(-0x1, 0x17f)));
+        assert.isTrue(Ratio.parse('0x49C/0x1').eq(ratio(0x49c)));
+        assert.isTrue(Ratio.parse('-0x156/1').eq(ratio(-0x156)));
+        assert.isTrue(Ratio.parse('0x89A.BCD/0x567.89A').eq(ratio(0x89abcd, 0x56789a)));
+        assert.isTrue(Ratio.parse('0x789.ABC/0xFAB').eq(ratio(0x789abc, 0xfab000)));
+        assert.throws(() => Ratio.parse('0xf/0x0'));
+        assert.throws(() => Ratio.parse('0xg/0x1'));
+      });
+
+      it('mixed', () => {
+        assert.isTrue(Ratio.parse('0b10101/0o12345').eq(ratio(0b10101, 0o12345)));
+        assert.isTrue(Ratio.parse('0b10101/56789').eq(ratio(0b10101, 56789)));
+        assert.isTrue(Ratio.parse('0b10101/0xABCDE').eq(ratio(0b10101, 0xabcde)));
+        assert.isTrue(Ratio.parse('0o12345/0b10101').eq(ratio(0o12345, 0b10101)));
+        assert.isTrue(Ratio.parse('0o12345/56789').eq(ratio(0o12345, 56789)));
+        assert.isTrue(Ratio.parse('0o12345/0xABCDE').eq(ratio(0o12345, 0xabcde)));
+        assert.isTrue(Ratio.parse('56789/0b10101').eq(ratio(56789, 0b10101)));
+        assert.isTrue(Ratio.parse('56789/0o12345').eq(ratio(56789, 0o12345)));
+        assert.isTrue(Ratio.parse('56789/0xABCDE').eq(ratio(56789, 0xabcde)));
+        assert.isTrue(Ratio.parse('0xABCDE/0b10101').eq(ratio(0xabcde, 0b10101)));
+        assert.isTrue(Ratio.parse('0xABCDE/56789').eq(ratio(0xabcde, 56789)));
+        assert.isTrue(Ratio.parse('0xABCDE/0o12345').eq(ratio(0xabcde, 0o12345)));
+      });
+    });
+
+    describe('pointNumber', () => {
+      it('binary', () => {
+        assert.isTrue(Ratio.parse('0b0.1').eq(ratio(0b1, 2 ** 1)));
+        assert.isTrue(Ratio.parse('0b10.01').eq(ratio(0b1001, 2 ** 2)));
+        assert.isTrue(Ratio.parse('-0b1.111').eq(ratio(-0b1111, 2 ** 3)));
+        assert.isTrue(Ratio.parse('-0b1.010(1)').eq(ratio(-0b1011, 2 ** 3)));
+        assert.isTrue(Ratio.parse('0b0.(1)').eq(ratio(1)));
+        assert.isTrue(Ratio.parse('0b101.(0)').eq(ratio(0b101)));
+        assert.isTrue(Ratio.parse('-0b1.(101)').eq(ratio(-0b1100, 2 ** 3 - 1)));
+      });
+
+      it('octal', () => {
+        assert.isTrue(Ratio.parse('0o0.7').eq(ratio(0o7, 8 ** 1)));
+        assert.isTrue(Ratio.parse('0o45.67').eq(ratio(0o4567, 8 ** 2)));
+        assert.isTrue(Ratio.parse('-0o3.456').eq(ratio(-0o3456, 8 ** 3)));
+        assert.isTrue(Ratio.parse('0o0.34(5)').eq(ratio(0o311, 8 ** 2 * (8 ** 1 - 1))));
+        assert.isTrue(Ratio.parse('0o0.(5)').eq(ratio(0o5, 8 ** 1 - 1)));
+        assert.isTrue(Ratio.parse('0o567.(1)').eq(ratio(0o5102, 8 ** 1 - 1)));
+        assert.isTrue(Ratio.parse('-0o123.(456)').eq(ratio(-0o123333, 8 ** 3 - 1)));
+      });
+
+      it('decimal', () => {
+        assert.isTrue(Ratio.parse('0.1').eq(ratio(1, 10)));
+        assert.isTrue(Ratio.parse('-1.2').eq(ratio(-12, 10)));
+        assert.isTrue(Ratio.parse('0.(3)').eq(ratio(1, 3)));
+        assert.isTrue(Ratio.parse('-1.2(3)').eq(ratio(-111, 90)));
+        assert.isTrue(Ratio.parse('0.(102)').eq(ratio(34, 333)));
+        assert.isTrue(Ratio.parse('12.3(45)e3').eq(ratio(12222 * 10 ** 3, 10 * (10 ** 2 - 1))));
+      });
+
+      it('hex', () => {
+        assert.isTrue(Ratio.parse('0x0.a').eq(ratio(0xa, 16)));
+        assert.isTrue(Ratio.parse('-0x1.2').eq(ratio(-0x12, 16)));
+        assert.isTrue(Ratio.parse('0x0.(b)').eq(ratio(0xb, 16 ** 1 - 1)));
+        assert.isTrue(Ratio.parse('-0xa.b(c)').eq(ratio(-0xa11, 16 ** 1 * (16 ** 1 - 1))));
+        assert.isTrue(Ratio.parse('0x0.(abc)').eq(ratio(0xabc, 16 ** 3 - 1)));
+      });
+    });
+
+    describe('integer', () => {
+      it('binary', () => {
+        assert.isTrue(Ratio.parse('0b10101').eq(ratio(0b10101)));
+        assert.isTrue(Ratio.parse('-0b10101').eq(ratio(-0b10101)));
+        assert.isTrue(Ratio.parse('0b010101').eq(ratio(0b10101)));
+        assert.throw(() => Ratio.parse('0b2'));
+      });
+
+      it('octal', () => {
+        assert.isTrue(Ratio.parse('0o4567').eq(ratio(0o4567)));
+        assert.isTrue(Ratio.parse('-0o4567').eq(ratio(-0o4567)));
+        assert.isTrue(Ratio.parse('0o04567').eq(ratio(0o4567)));
+        assert.throw(() => Ratio.parse('0o8'));
+      });
+
+      it('decimal', () => {
+        assert.isTrue(Ratio.parse('4567').eq(ratio(4567)));
+        assert.isTrue(Ratio.parse('-4567').eq(ratio(-4567)));
+        assert.isTrue(Ratio.parse('04567').eq(ratio(4567)));
+        assert.throw(() => Ratio.parse('a'));
+      });
+
+      it('hex', () => {
+        assert.isTrue(Ratio.parse('0xABCD').eq(ratio(0xabcd)));
+        assert.isTrue(Ratio.parse('-0xabcd').eq(ratio(-0xabcd)));
+        assert.isTrue(Ratio.parse('0x0abcd').eq(ratio(0xabcd)));
+        assert.throw(() => Ratio.parse('0xg'));
+      });
+    });
+  });
 });
 
 describe('standard operators', () => {
