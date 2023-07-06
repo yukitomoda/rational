@@ -299,7 +299,7 @@ class Ratio {
    * この有理数を指定した値で割って得られる値を返します。
    * @param rhs 除算する値。
    */
-  public div(rhs: Ratio | bigint | number): Ratio {
+  public div(rhs: ConvertableToRatio): Ratio {
     if (rhs instanceof Ratio) {
       return this.mul(rhs.inv());
     } else {
