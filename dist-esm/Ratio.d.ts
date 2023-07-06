@@ -165,7 +165,7 @@ declare class Ratio {
      * この有理数を指定した値で割って得られる値を返します。
      * @param rhs 除算する値。
      */
-    div(rhs: Ratio | bigint | number): Ratio;
+    div(rhs: ConvertableToRatio): Ratio;
     /**
      * この有理数が指定した値と等しいかどうかを調べます。
      * @param rhs この値と等しいか調べる値。
