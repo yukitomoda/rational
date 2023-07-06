@@ -252,6 +252,14 @@ class Ratio {
   }
 
   /**
+   * この有理数の絶対値を返します。
+   */
+  public abs(): Ratio {
+    if (this.isNegative) return this.neg();
+    return this;
+  }
+
+  /**
    * この有理数に指定した値を加えて得られる値を返します。
    * @param rhs 加算する値。
    */

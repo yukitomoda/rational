@@ -338,6 +338,14 @@ describe('standard operators', () => {
     assert.isTrue(new Ratio(0, 1).neg().eq(new Ratio(0, 1)));
   });
 
+  it('abs', () => {
+    assert.isTrue(new Ratio(1, 2).abs().eq(new Ratio(1, 2)));
+    assert.isTrue(new Ratio(-1, -2).abs().eq(new Ratio(1, 2)));
+    assert.isTrue(new Ratio(1, -2).abs().eq(new Ratio(1, 2)));
+    assert.isTrue(new Ratio(-1, 2).abs().eq(new Ratio(1, 2)));
+    assert.isTrue(new Ratio(0, 1).abs().eq(new Ratio(0, 1)));
+  });
+
   describe('eq', () => {
     it('Ratio', () => {
       assert.isTrue(new Ratio(0, 1).eq(new Ratio(0, 1)));
