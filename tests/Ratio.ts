@@ -100,6 +100,16 @@ describe('properties', () => {
     assert.isFalse(new Ratio(0, -1).isNegative);
     assert.isFalse(new Ratio(0, 10000000n).isNegative);
   });
+
+  it('sign', () => {
+    assert.equal(new Ratio(0, 1).sign, 0);
+    assert.equal(new Ratio(0, 3).sign, 0);
+    assert.equal(new Ratio(0, -3).sign, 0);
+    assert.equal(new Ratio(1, 3).sign, 1);
+    assert.equal(new Ratio(-1, -3).sign, 1);
+    assert.equal(new Ratio(-1, 3).sign, -1);
+    assert.equal(new Ratio(1, -3).sign, -1);
+  });
 });
 
 describe('toDecimal', () => {
