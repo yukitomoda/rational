@@ -388,6 +388,22 @@ class Ratio {
   }
 
   /**
+   * この有理数を四捨五入します。
+   *
+   * Math.roundと同様に、小数部分がちょうど0.5のとき、正の無限大の方向へ丸められます。
+   */
+  public round(): bigint {
+    const reduced = this.getReduced();
+    const floor = reduced.floor();
+    const fracPart = reduced.sub(floor);
+    if (fracPart.num * 2n < fracPart.denom) {
+      return floor;
+    } else {
+      return floor + 1n;
+    }
+  }
+
+  /**
    * この値を指定した小数点以下桁数までの10進法表記文字列に変換します。
    * @param digits 文字列に含める小数点以下桁数。
    */

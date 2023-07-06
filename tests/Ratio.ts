@@ -448,7 +448,7 @@ describe('standard operators', () => {
   });
 });
 
-describe('floor, ceil, trunc', () => {
+describe('floor, ceil, trunc, round', () => {
   it('floor', () => {
     assert.equal(ratio(10n ** 10n).floor(), 10n ** 10n);
     assert.equal(ratio(1).floor(), 1n);
@@ -495,5 +495,24 @@ describe('floor, ceil, trunc', () => {
     assert.equal(ratio(-9, 10).trunc(), 0n);
     assert.equal(ratio(-10, 10).trunc(), -1n);
     assert.equal(ratio(-11, 10).trunc(), -1n);
+  });
+
+  it('round', () => {
+    assert.equal(ratio(0).round(), 0n);
+    assert.equal(ratio(1, 3).round(), 0n);
+    assert.equal(ratio(1, 2).round(), 1n);
+    assert.equal(ratio(2, 3).round(), 1n);
+    assert.equal(ratio(1).round(), 1n);
+    assert.equal(ratio(4, 3).round(), 1n);
+    assert.equal(ratio(3, 2).round(), 2n);
+    assert.equal(ratio(5, 3).round(), 2n);
+
+    assert.equal(ratio(-1, 3).round(), 0n);
+    assert.equal(ratio(-1, 2).round(), 0n);
+    assert.equal(ratio(-2, 3).round(), -1n);
+    assert.equal(ratio(-1).round(), -1n);
+    assert.equal(ratio(-4, 3).round(), -1n);
+    assert.equal(ratio(-3, 2).round(), -1n);
+    assert.equal(ratio(-5, 3).round(), -2n);
   });
 });
