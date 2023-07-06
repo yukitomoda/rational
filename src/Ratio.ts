@@ -426,4 +426,24 @@ class Ratio {
   }
 }
 
-export { ratio, Ratio };
+function reduceAsRatio(values: ConvertableToRatio[], selector: (a: Ratio, b: Ratio) => Ratio): Ratio {
+  return values.map((e) => Ratio.from(e)).reduce(selector);
+}
+
+/**
+ * 指定した値をすべて有理数に変換し、もっとも大きいものを返します。
+ * @param values 比較する値。
+ */
+function max(...values: ConvertableToRatio[]): Ratio {
+  return reduceAsRatio(values, (a, b) => (a.gt(b) ? a : b));
+}
+
+/**
+ * 指定した値をすべて有理数に変換し、もっとも小さいものを返します。
+ * @param values 比較する値。
+ */
+function min(...values: ConvertableToRatio[]): Ratio {
+  return reduceAsRatio(values, (a, b) => (a.lt(b) ? a : b));
+}
+
+export { ratio, Ratio, max, min };
