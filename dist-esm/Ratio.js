@@ -38,6 +38,16 @@ class Ratio {
         return !this.isZero && this.num < 0 === this.denom < 0;
     }
     /**
+     * この値が正の数のとき1、0のとき0、負の数のとき-1を返します。
+     */
+    get sign() {
+        if (this.num === 0n)
+            return 0;
+        if (this.num < 0 !== this.denom < 0)
+            return -1;
+        return 1;
+    }
+    /**
      * 指定した分子、分母で有理数のインスタンスを作成します。
      *
      * このコンストラクタでは、分子、分母の値はそのまま保持され、既約分数への変換は行われません。
@@ -195,6 +205,14 @@ class Ratio {
         }
     }
     /**
+     * この有理数の絶対値を返します。
+     */
+    abs() {
+        if (this.isNegative)
+            return this.neg();
+        return this;
+    }
+    /**
      * この有理数に指定した値を加えて得られる値を返します。
      * @param rhs 加算する値。
      */
@@ -340,6 +358,22 @@ class Ratio {
         return reduced.num / reduced.denom;
     }
     /**
+     * この有理数を四捨五入します。
+     *
+     * Math.roundと同様に、小数部分がちょうど0.5のとき、正の無限大の方向へ丸められます。
+     */
+    round() {
+        const reduced = this.getReduced();
+        const floor = reduced.floor();
+        const fracPart = reduced.sub(floor);
+        if (fracPart.num * 2n < fracPart.denom) {
+            return floor;
+        }
+        else {
+            return floor + 1n;
+        }
+    }
+    /**
      * この値を指定した小数点以下桁数までの10進法表記文字列に変換します。
      * @param digits 文字列に含める小数点以下桁数。
      */
@@ -377,5 +411,22 @@ class Ratio {
         }
     }
 }
-export { ratio, Ratio };
+function reduceAsRatio(values, selector) {
+    return values.map((e) => Ratio.from(e)).reduce(selector);
+}
+/**
+ * 指定した値をすべて有理数に変換し、もっとも大きいものを返します。
+ * @param values 比較する値。
+ */
+function max(...values) {
+    return reduceAsRatio(values, (a, b) => (a.gt(b) ? a : b));
+}
+/**
+ * 指定した値をすべて有理数に変換し、もっとも小さいものを返します。
+ * @param values 比較する値。
+ */
+function min(...values) {
+    return reduceAsRatio(values, (a, b) => (a.lt(b) ? a : b));
+}
+export { ratio, Ratio, max, min };
 //# sourceMappingURL=Ratio.js.map

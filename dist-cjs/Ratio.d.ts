@@ -87,6 +87,10 @@ declare class Ratio {
      */
     get isPositive(): boolean;
     /**
+     * この値が正の数のとき1、0のとき0、負の数のとき-1を返します。
+     */
+    get sign(): -1 | 0 | 1;
+    /**
      * 指定した分子、分母で有理数のインスタンスを作成します。
      *
      * このコンストラクタでは、分子、分母の値はそのまま保持され、既約分数への変換は行われません。
@@ -138,6 +142,10 @@ declare class Ratio {
      * この有理数の符号を反転した値を返します。
      */
     neg(): Ratio;
+    /**
+     * この有理数の絶対値を返します。
+     */
+    abs(): Ratio;
     /**
      * この有理数に指定した値を加えて得られる値を返します。
      * @param rhs 加算する値。
@@ -196,6 +204,12 @@ declare class Ratio {
      */
     trunc(): bigint;
     /**
+     * この有理数を四捨五入します。
+     *
+     * Math.roundと同様に、小数部分がちょうど0.5のとき、正の無限大の方向へ丸められます。
+     */
+    round(): bigint;
+    /**
      * この値を指定した小数点以下桁数までの10進法表記文字列に変換します。
      * @param digits 文字列に含める小数点以下桁数。
      */
@@ -207,4 +221,14 @@ declare class Ratio {
      */
     toString(): string;
 }
-export { ratio, Ratio };
+/**
+ * 指定した値をすべて有理数に変換し、もっとも大きいものを返します。
+ * @param values 比較する値。
+ */
+declare function max(...values: ConvertableToRatio[]): Ratio;
+/**
+ * 指定した値をすべて有理数に変換し、もっとも小さいものを返します。
+ * @param values 比較する値。
+ */
+declare function min(...values: ConvertableToRatio[]): Ratio;
+export { ratio, Ratio, max, min };
