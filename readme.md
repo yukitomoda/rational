@@ -89,6 +89,8 @@ console.log(ratio('0x0a/0xff'));
 ### 文字列への変換
 
 ```js
-//
-console.log(ratio('-3/5'));
+// '-3/5'
+console.log(ratio(-3, 5).toString());
+// '-1/3'
+console.log(ratio(3, -9).toString());
 ```
