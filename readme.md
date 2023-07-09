@@ -1,11 +1,11 @@
 # rational
 
-リファレンスは[こちら](https://gitbucket.littleescaper.net/gitbucket/tomoda/Rational/pages/index.html)
+リファレンスは[こちら](https://yukitomoda.github.io/rational/)
 
 ## installation
 
 ```sh
-npm i git+https://gitbucket.littleescaper.net/gitbucket/git/tomoda/Rational.git
+npm i git+https://github.com/yukitomoda/rational.git
 ```
 
 ## example
@@ -26,7 +26,7 @@ console.log(a.mul(b).toString());
 console.log(a.div(b).toString());
 ```
 
-他にどのような演算子が実装されているか知るには、[リファレンス](https://gitbucket.littleescaper.net/gitbucket/tomoda/Rational/pages/index.html)を参照してください。
+他にどのような演算子が実装されているか知るには、[リファレンス](https://yukitomoda.github.io/rational/)を参照してください。
 
 ### 他の型からの変換
 
