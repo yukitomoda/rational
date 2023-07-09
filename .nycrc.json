@@ -1,0 +1,12 @@
+{
+  "nyc": {
+    "all": true,
+    "check-coverage": true,
+    "include": [],
+    "exclude": []
+  },
+  "reporter": "html",
+  "report-dir": "tmp/coverage-report",
+  "temp-dir": ".nyc_output",
+  "sourceMap": true
+}

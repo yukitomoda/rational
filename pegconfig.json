@@ -1,0 +1,10 @@
+{
+  "customHeader": ["import * as Types from './types';"],
+  "tspegjs": {
+    "errorName": "RatioSyntaxError"
+  },
+  "plugins": ["./node_modules/ts-pegjs/dist/tspegjs"],
+  "returnType": {
+    "Root": "Types.Number"
+  }
+}
