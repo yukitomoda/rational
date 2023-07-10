@@ -1,5 +1,7 @@
 # rational
 
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/yukitomoda/rational/ci.yml)
+
 リファレンスは[こちら](https://yukitomoda.github.io/rational/)
 
 ## installation
