@@ -308,6 +308,21 @@ class Ratio {
   }
 
   /**
+   * この有理数の累乗を返します。
+   * @param rhs 指数。この値は整数でなければなりません。
+   */
+  public pow(rhs: ConvertableToBigInt): Ratio {
+    rhs = BigInt(rhs);
+    const reduced = this.getReduced();
+    if (rhs < 0) {
+      rhs = -rhs;
+      return new Ratio(reduced.denom ** rhs, reduced.num ** rhs);
+    } else {
+      return new Ratio(reduced.num ** rhs, reduced.denom ** rhs);
+    }
+  }
+
+  /**
    * この有理数が指定した値と等しいかどうかを調べます。
    * @param rhs この値と等しいか調べる値。
    */
