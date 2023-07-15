@@ -324,6 +324,26 @@ describe('conversion', () => {
 });
 
 describe('standard operators', () => {
+  it('pow', () => {
+    assert.isTrue(ratio(3, 2).pow(1).eq(ratio(3, 2)));
+    assert.isTrue(ratio(-3, 2).pow(1).eq(ratio(-3, 2)));
+    assert.isTrue(ratio(3, 2).pow(2).eq(ratio(9, 4)));
+    assert.isTrue(ratio(-3, 2).pow(2).eq(ratio(9, 4)));
+    assert.isTrue(ratio(-3, 2).pow(3).eq(ratio(-27, 8)));
+    assert.isTrue(ratio(3, 2).pow(-2).eq(ratio(4, 9)));
+    assert.isTrue(ratio(-3, 2).pow(-2).eq(ratio(4, 9)));
+    assert.isTrue(ratio(-3, 2).pow(-3).eq(ratio(8, -27)));
+    assert.isTrue(ratio(0).pow(1).eq(ratio(0)));
+    assert.isTrue(ratio(0).pow(2).eq(ratio(0)));
+
+    assert.isTrue(ratio(3, 2).pow(0).eq(ratio(1)));
+    assert.isTrue(ratio(-3, 2).pow(0).eq(ratio(1)));
+    assert.isTrue(ratio(0).pow(0).eq(ratio(1)));
+
+    assert.throws(() => ratio(0).pow(-1));
+    assert.throws(() => ratio(0).pow(-2));
+  });
+
   it('inv', () => {
     assert.isTrue(new Ratio(1, 2).inv().eq(new Ratio(2, 1)));
     assert.isTrue(new Ratio(-1, 2).inv().eq(new Ratio(-2, 1)));
