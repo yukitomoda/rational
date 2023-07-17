@@ -1,0 +1,32 @@
+name: generate-doc
+
+on:
+  push:
+    branches: [ "main" ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run doc
+      - name: git setting
+        run: |
+          git config --local user.email "${{ vars.DOC_AUTO_GENERATOR_GIT_USER_EMAIL }}"
+          git config --local user.name "${{ vars.DOC_AUTO_GENERATOR_GIT_USER_NAME }}"
+      - name: Commit files
+        run: |
+          git add ./docs
+          git commit -m "auto: generate document" -a
+      - name: Push files
+        run: |
+          git pull
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
